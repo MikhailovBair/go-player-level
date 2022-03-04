@@ -1,0 +1,49 @@
+#Options: 
+#--indir (-i) - the directory from which sgf files are taken
+#--outdir (-o) - the directory where the cartago exhaust is placed
+#--playout (-p) - playout - number of playouts used in katago
+
+import os
+import re
+import sys
+import argparse
+
+FILE_FORMAT = '.sgf'
+
+def createParser ():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i', '--indir')
+    parser.add_argument('-o', '--outdir')
+    parser.add_argument('-p', '--playout')
+    return parser
+
+def getKatagoJsonFile(source_filename):
+    return source_filename[:-len(FILE_FORMAT)] + '.json'
+
+def getKatagoAnalyzedFile(source_filename):
+    return source_filename[:-len(FILE_FORMAT)] + '-analyzed.sgf'
+
+parser = createParser()
+namespace = parser.parse_args(sys.argv[1:])
+
+in_directory = namespace.indir
+out_directory = namespace.outdir
+playout = int(namespace.playout)
+
+files = os.listdir(in_directory)
+
+sgf_re = '.*\.sgf'
+analized = '.*analyzed\.sgf'
+
+target_files = []
+
+for file in files:
+    if re.match(sgf_re, file) is not None and re.match(analized, file) is None:
+        target_files.append(file)
+
+for target_file in target_files:
+    os.system('analyze-sgf -s -a \"maxVisits:{}\" '.format(playout) + in_directory + '/' + target_file) 
+    json_file = getKatagoJsonFile(target_file)
+    analyz_file = getKatagoAnalyzedFile(target_file)
+    os.replace(in_directory + '/' + json_file, out_directory + '/' + json_file)
+    os.replace(in_directory + '/' + analyz_file, out_directory + '/' + analyz_file)
