@@ -31,7 +31,7 @@ namespace = parser.parse_args(sys.argv[1:])
 in_directory = namespace.indir
 out_directory = namespace.outdir
 playout = int(namespace.playout)
-delete_files = namespace.d is not None
+delete_files = namespace.d
 
 files = os.listdir(in_directory)
 
