@@ -2,6 +2,7 @@
 #--indir (-i) - the directory from which sgf files are taken
 #--outdir (-o) - the directory where the cartago exhaust is placed
 #--playout (-p) - playout - number of playouts used in katago
+#-d - удалять файлы из indir как только они обработаются
 
 import os
 import re
@@ -15,6 +16,7 @@ def createParser ():
     parser.add_argument('-i', '--indir')
     parser.add_argument('-o', '--outdir')
     parser.add_argument('-p', '--playout')
+    parser.add_argument('-d', action = "store_true")
     return parser
 
 def getKatagoJsonFile(source_filename):
@@ -29,6 +31,7 @@ namespace = parser.parse_args(sys.argv[1:])
 in_directory = namespace.indir
 out_directory = namespace.outdir
 playout = int(namespace.playout)
+delete_files = namespace.d is not None
 
 files = os.listdir(in_directory)
 
@@ -47,3 +50,5 @@ for target_file in target_files:
     analyz_file = getKatagoAnalyzedFile(target_file)
     os.replace(in_directory + '/' + json_file, out_directory + '/' + json_file)
     os.replace(in_directory + '/' + analyz_file, out_directory + '/' + analyz_file)
+    if delete_files:
+        os.remove(in_directory + '/' + target_file) 
