@@ -12,9 +12,22 @@ def get_ratings(line):
     w_rating = line[ind+3: ind2]
     return w_rating, b_rating
 
+def get_moves(line):
+    moves = []
+    ind = line.find(';B[')
+    line = line[ind+3:]
+    
+    
+    while ind != -1:
+        moves.append(line[:2])
+        
+        ind = line.find('[')
+        line = line[ind+1:]
+    return moves
+
 def file_to_row(name):
     # инициализация хранилища
-    features = ['scoreLead', 'scoreSelfplay', 'scoreStdev', 'utility', 'visits', 'winrate']
+    features = ['moves', 'scoreLead', 'scoreSelfplay', 'scoreStdev', 'utility', 'visits', 'winrate']
     stats = dict()
     stats['B'] = dict()
     stats['W'] = dict()
@@ -22,22 +35,30 @@ def file_to_row(name):
         stats['B'][feature] = []
         stats['W'][feature] = []
     # чтение файла
-    with open(name, 'r') as f:
+    with open(name, 'r', encoding='utf-8') as f:
         lines = f.read().split('\n')
     
+    or_lines = dict()
+    for line in lines[1:-1]:
+        key = json.loads(line)['turnNumber']
+        or_lines[key] = json.loads(line)
+
     # обработка каждого хода
-    for line in lines[1:]:
-        if len(line) < 10:
-            break
-        json_line = json.loads(line)['rootInfo']
+    moves = get_moves(lines[0])
+    for key in sorted(list(or_lines.keys()))[:-1]:
+        json_line = or_lines[key]['rootInfo']
+        #json_line = json.loads(line)['rootInfo']
         color = json_line['currentPlayer']
-        for feature in features:
+        for feature in features[1:]:
             stats[color][feature].append(json_line[feature])
+        stats[color]['moves'].append(moves[key])
     row = []
     ratings = get_ratings(lines[0])
     row.append(ratings[0])
     row.append(ratings[1])
     
+    
+
     # сохраняем последовательность статистик в виде строки
     for feature in features:
         stat = map(str, stats['W'][feature])
@@ -49,7 +70,8 @@ def file_to_row(name):
 
 
 def create_csv(filename, rows):
-    columns = ['W_rating', 'B_rating','W_scoreLead', 'B_scoreLead','W_scoreSelfplay', 'B_scoreSelfplay',
+    columns = ['W_rating', 'B_rating', 'W_move', 'B_move',
+            'W_scoreLead', 'B_scoreLead','W_scoreSelfplay', 'B_scoreSelfplay',
            'W_scoreStdev', 'B_scoreStdev', 'W_utility', 'B_utility', 'W_visits', 'B_visits',
            'W_winrate', 'B_winrate']
     with open(filename, 'w', newline='') as f:
