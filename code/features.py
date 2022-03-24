@@ -3,38 +3,40 @@ import pandas as pd
 from tqdm import tqdm
 
 
-def add_basic_stats(row, moves, suff=""):
-
-    row['mean_deltawinrate' + suff] = np.mean(moves.winrate_delta)
-    row['mean_deltascoreLead' + suff] = np.mean(moves.score_delta)
-    row['mean_deltaSelfPlay' + suff] = np.mean(moves.selfplay_delta)
-    row['mean_utility' + suff] = np.mean(moves.utility_delta)
-
-    row['beautiful_percent' + suff] = np.sum([1 if x > 0 else 0 for x in moves.winrate_delta])
-    row['beautifulS_percent' + suff] = np.sum([1 if x > 0 else 0 for x in moves.score_delta])
-
-    row['dispersy_scoreLead' + suff] = np.var(moves.score_delta)
+def add_basic_stats(row, moves, pref=""):
+    row[pref + 'winrate_mean'] = np.mean(moves.winrate_delta)
+    row[pref + 'score_mean'] = np.mean(moves.score_delta)
+    row[pref + 'score_var'] = np.var(moves.score_delta)
+    row[pref + 'selfplay_mean'] = np.mean(moves.selfplay_delta)
+    row[pref + 'utility_mean'] = np.mean(moves.utility_delta)
+    row[pref + 'winrate_beauty_percent'] = np.mean([x > 0 for x in moves.winrate_delta])
+    row[pref + 'score_beauty_percent'] = np.mean([x > 0 for x in moves.score_delta])
 
 
-def add_advanced_stats(row, moves, suff=""):
-
+def add_advanced_stats(row, moves, pref=""):
     moves.score_delta.sort()
     moves.winrate_delta.sort()
 
-    row['Score25p' + suff] = moves.score_delta[int(moves.cnt_moves * 0.25)]
-    row['Score75p' + suff] = moves.score_delta[int(moves.cnt_moves * 0.75)]
-    row['BestScoreMove'] = np.max(moves.score_delta)
-    row['WorstScoreMove'] = np.min(moves.score_delta)
-    row['Winrate25p'] = moves.winrate_delta[int(moves.cnt_moves * 0.25)]
-    row['Winrate75p'] = moves.winrate_delta[int(moves.cnt_moves * 0.75)]
+    row[pref + 'score25p'] = moves.score_delta[int(moves.cnt_moves * 0.25)]
+    row[pref + 'score75p'] = moves.score_delta[int(moves.cnt_moves * 0.75)]
+    row[pref + 'score_max'] = np.max(moves.score_delta)
+    row[pref + 'score_min'] = np.min(moves.score_delta)
+    row[pref + 'winrate25p'] = moves.winrate_delta[int(moves.cnt_moves * 0.25)]
+    row[pref + 'winrate75p'] = moves.winrate_delta[int(moves.cnt_moves * 0.75)]
 
-    row['Mean5WorstScoreMove'] = np.mean(moves.score_delta[-5:])
-    row['Mean5BestScoreMove'] = np.mean(moves.score_delta[:5])
+    row[pref + 'score_five_best_mean'] = np.mean(moves.score_delta[-5:])
+    row[pref + 'score_five_worst_mean'] = np.mean(moves.score_delta[:5])
 
-    row['median_scorelead'] = moves.score_delta[int(moves.cnt_moves * 0.5)]
+    row[pref + 'stddev_last'] = moves.stddev_delta[-1]
+    moves.stddev_delta.sort()
+    row[pref + 'stddev_mean'] = np.mean(moves.stddev_delta)
+    row[pref + 'stddev50p'] = moves.stddev_delta[int(moves.cnt_moves * 0.5)]
 
-    row['mean_deltaScore50p'] = np.mean(moves.score_delta[int(moves.cnt_moves * 0.25):int(moves.cnt_moves * 0.75)])
-    row['mean_deltawinrate50p'] = np.mean(moves.winrate_delta[int(moves.cnt_moves * 0.25):int(moves.cnt_moves * 0.75)])
+    row[pref + 'score50p'] = moves.score_delta[int(moves.cnt_moves * 0.5)]
+
+    row[pref + 'winrate_midmean'] = np.mean(
+        moves.winrate_delta[int(moves.cnt_moves * 0.25):int(moves.cnt_moves * 0.75)])
+    row[pref + 'score_midmean'] = np.mean(moves.score_delta[int(moves.cnt_moves * 0.25):int(moves.cnt_moves * 0.75)])
 
 
 def get_int_from_rank(rank):
@@ -52,8 +54,13 @@ def get_rank_from_int(x):
 
 
 def add_meta(row):
-    row['length'] = len(row['W_move']) + len(row['B_move'])
-    row['chiselka'] = get_int_from_rank(row['W_rating'])
+    if row['Result'] == '?':
+        row['game_result'] = 0
+    else:
+        row['game_result'] = int(row['Result'])
+    row['rank'] = get_int_from_rank(row['W_rating'])
+    row['game_length'] = len(row['W_move']) + len(row['B_move'])
+
 
 def convert_to_lists(df):
     for i, row in tqdm(df.iterrows()):
@@ -70,7 +77,7 @@ def convert_to_lists(df):
 
 
 class MovesInfo:
-    def __init__(self, row, n_moves = None):
+    def __init__(self, row, n_moves=None):
         moves_len = min(len(row['W_winrate']), len(row['B_winrate']))
         if n_moves is None:
             start_ind = 0
@@ -83,6 +90,7 @@ class MovesInfo:
         self.score_delta = []
         self.utility_delta = []
         self.selfplay_delta = []
+        self.stddev_delta = []
         self.cnt_moves = end_ind - start_ind
         self.move = row['W_move'].split()
 
@@ -91,38 +99,39 @@ class MovesInfo:
             self.score_delta.append(row['W_scoreLead'][i] - row['B_scoreLead'][i])
             self.utility_delta.append(row['W_utility'][i] - row['B_utility'][i])
             self.selfplay_delta.append(row['W_scoreSelfplay'][i] - row['B_scoreSelfplay'][i])
+            self.stddev_delta.append(row['W_scoreStdev'][i] - row['B_scoreStdev'][i])
 
 
 def add_all_game_stats(df):
-
-    df['mean_deltawinrate'] = None
-    df['mean_deltaScore50p'] = None
-    df['mean_deltascoreLead'] = None
-    df['dispersy_scoreLead'] = None
-    df['beautiful_percent'] = None
-    df['beautifulS_percent'] = None
-    df['mean_utility'] = None
-    df['Score25p'] = None
-    df['Score75p'] = None
-    df['Winrate25p'] = None
-    df['Winrate75p'] = None
-    df['mean_deltawinrate50p'] = None
-    df['median_scorelead'] = None
-    df['length'] = None
-    df['chiselka'] = None
-    df['mean_deltaSelfPlay'] = None
-    df['delta_stddev'] = None
-    df['median_delta_stddev'] = None
-    df['last_stdev'] = None
-    df['BestScoreMove'] = None
-    df['WorstScoreMove'] = None
-    df['Mean5WorstScoreMove'] = None
-    df['Mean5BestScoreMove'] = None
+    df['winrate_mean'] = None
+    df['score_midmean'] = None
+    df['score_mean'] = None
+    df['score_var'] = None
+    df['winrate_beauty_percent'] = None
+    df['score_beauty_percent'] = None
+    df['utility_mean'] = None
+    df['score25p'] = None
+    df['score75p'] = None
+    df['winrate25p'] = None
+    df['winrate75p'] = None
+    df['winrate_midmean'] = None
+    df['score50p'] = None
+    df['game_length'] = None
+    df['rank'] = None
+    df['game_result'] = None
+    df['selfplay_mean'] = None
+    df['stddev_mean'] = None
+    df['stddev50p'] = None
+    df['stddev_last'] = None
+    df['score_max'] = None
+    df['score_min'] = None
+    df['score_five_best_mean'] = None
+    df['score_five_worst_mean'] = None
 
     for i, row in tqdm(df.iterrows()):
+        add_meta(row)
         add_basic_stats(row, MovesInfo(row))
         add_advanced_stats(row, MovesInfo(row))
-        add_meta(row)
 
 
 def get_start_of_yose(margin_moves, no_change_count=5):
@@ -145,19 +154,19 @@ def get_start_of_yose(margin_moves, no_change_count=5):
     return ans
 
 
-def reset_basic_stats(df, suff):
-    df['mean_deltawinrate' + suff] = None
-    df['beautiful_percent' + suff] = None
-    df['beautifulS_percent' + suff] = None
-    df['mean_deltascoreLead' + suff] = None
-    df['mean_deltaSelfPlay' + suff] = None
-    df['dispersy_scoreLead' + suff] = None
-    df['mean_utility' + suff] = None
+def reset_basic_stats(df, pref):
+    df[pref + 'winrate_mean'] = None
+    df[pref + 'winrate_beauty_percent'] = None
+    df[pref + 'score_beauty_percent'] = None
+    df[pref + 'score_mean'] = None
+    df[pref + 'selfplay_mean'] = None
+    df[pref + 'score_var'] = None
+    df[pref + 'utility_mean'] = None
 
 
 def is_marginal_move(move):
-    return (move[0] == 'a' or move[0] == 'b') or (move[0] == 'r' or move[0] == 's') or\
-            (move[1] == 'a' or move[1] == 'b') or (move[1] == 'r' or move[1] == 's')
+    return (move[0] == 'a' or move[0] == 'b') or (move[0] == 'r' or move[0] == 's') or \
+           (move[1] == 'a' or move[1] == 'b') or (move[1] == 'r' or move[1] == 's')
 
 
 def count_of_marginal_moves(moves):
@@ -169,18 +178,18 @@ def count_of_marginal_moves(moves):
 
 
 def add_yose_stats(df):
-    suff = ' yose'
-    reset_basic_stats(df, suff)
-    df['len_yose'] = None
-    df['start_yose'] = None
-    df['has_yose'] = None
+    pref = 'yose_'
+    reset_basic_stats(df, pref)
+    df['yose_length'] = None
+    df['yose_start'] = None
+    df['yose_has'] = None
     for i, row in tqdm(df.iterrows()):
         marginal_moves = count_of_marginal_moves(row['W_move'].split())
         n_moves = get_start_of_yose(marginal_moves, 10)
-        add_basic_stats(row, MovesInfo(row, n_moves), suff)
-        row['len_yose'] = n_moves
-        row['start_yose'] = len(row['W_move'].split()) - n_moves
-        row['has_yose'] = row['start_yose'] != 0
+        add_basic_stats(row, MovesInfo(row, n_moves), pref)
+        row['yose_length'] = n_moves
+        row['yose_start'] = len(row['W_move'].split()) - n_moves
+        row['yose_has'] = row['yose_start'] != 0
 
 
 def delta_moves(a, b):
@@ -201,19 +210,12 @@ def get_distance_from_enemy(my_moves, enemy_moves):
     return ans
 
 
-def more_than(x, k):
-  if x >= k:
-    return True
-  else:
-    return False
-
-
-def add_last_moves_stats(df, n_moves, suff=None):
-    if suff is None:
-        suff = " " + str(n_moves)
-    reset_basic_stats(df, suff)
+def add_last_moves_stats(df, n_moves, pref=None):
+    if pref is None:
+        pref = str(n_moves) + "_"
+    reset_basic_stats(df, pref)
     for i, row in tqdm(df.iterrows()):
-        add_basic_stats(row, MovesInfo(row, n_moves), suff)
+        add_basic_stats(row, MovesInfo(row, n_moves), pref)
 
 
 def add_dist_stats_to_row(row):
@@ -221,27 +223,27 @@ def add_dist_stats_to_row(row):
     dist_enemy = get_distance_from_enemy(row['W_move'].split(), row['B_move'].split())
     dist.sort()
 
-    row['mean_dist'] = np.mean(dist)
-    row['dispersy_dist'] = np.var(dist)
-    row['median_dist'] = dist[len(dist) // 2]
-    row['percent_p10'] = np.sum([more_than(x, 10) for x in dist])
-    row['percent_p5'] = np.sum([more_than(x, 5) for x in dist])
-    row['percent_p20'] = np.sum([more_than(x, 20) for x in dist])
+    row['dist_mean'] = np.mean(dist)
+    row['dist_var'] = np.var(dist)
+    row['dist_median'] = dist[len(dist) // 2]
+    row['dist_procent_more_than_10'] = np.mean([x > 10 for x in dist])
+    row['dist_procent_more_than_5'] = np.mean([x > 5 for x in dist])
+    row['dist_procent_more_than_20'] = np.mean([x > 20 for x in dist])
 
-    row['mean_dist_from_enemy'] = np.mean(dist_enemy)
-    row['dispersy_dist_from_enemy'] = np.var(dist_enemy)
+    row['dist_from_enemy_mean'] = np.mean(dist_enemy)
+    row['dist_from_enemy_var'] = np.var(dist_enemy)
 
 
 def add_dist_stats(df):
-    df['mean_dist'] = None
-    df['dispersy_dist'] = None
-    df['percent_p10'] = None
-    df['percent_p5'] = None
-    df['percent_p20'] = None
+    df['dist_mean'] = None
+    df['dist_var'] = None
+    df['dist_median'] = None
+    df['dist_procent_more_than_5'] = None
+    df['dist_procent_more_than_10'] = None
+    df['dist_procent_more_than_20'] = None
 
-    df['mean_dist_from_enemy'] = None
-    df['dispersy_dist_from_enemy'] = None
-    df['median_dist'] = None
+    df['dist_from_enemy_mean'] = None
+    df['dist_from_enemy_var'] = None
 
     for i, row in tqdm(df.iterrows()):
         add_dist_stats_to_row(row)
@@ -249,8 +251,8 @@ def add_dist_stats(df):
 
 def delete_non_scalar_parameters(df):
     df.drop(['W_rating', 'B_rating', 'W_move', 'B_move', 'W_scoreLead', 'B_scoreLead', 'W_scoreSelfplay',
-             'B_scoreSelfplay', 'W_scoreStdev',	'B_scoreStdev',	'W_utility', 'B_utility', 'W_visits', 'B_visits',
-             'W_winrate', 'B_winrate'], axis=1, inplace=True)
+             'B_scoreSelfplay', 'W_scoreStdev', 'B_scoreStdev', 'W_utility', 'B_utility', 'W_visits', 'B_visits',
+             'W_winrate', 'B_winrate', 'Result'], axis=1, inplace=True)
 
 
 def get_feature_df(df):
@@ -262,5 +264,3 @@ def get_feature_df(df):
     add_dist_stats(df)
     delete_non_scalar_parameters(df)
     return df
-
-
