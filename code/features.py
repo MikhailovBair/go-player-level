@@ -77,29 +77,27 @@ def convert_to_lists(df):
 
 
 class MovesInfo:
-    def __init__(self, row, n_moves=None):
-        moves_len = min(len(row['W_winrate']), len(row['B_winrate']))
+    def __init__(self, row, n_moves=None, player='W'):
+        enemy = 'B' if player == 'W' else 'W'
+        moves_len = min(len(row[player + '_winrate']), len(row[enemy + '_winrate']))
         if n_moves is None:
             start_ind = 0
         else:
             start_ind = max(moves_len - n_moves - 1, 0)
 
         end_ind = moves_len
-
-        self.winrate_delta = []
-        self.score_delta = []
-        self.utility_delta = []
-        self.selfplay_delta = []
-        self.stddev_delta = []
+        self.winrate_delta = np.array(row[player + '_winrate'][start_ind:end_ind]) - np.array(
+            row[enemy + '_winrate'][start_ind:end_ind])
+        self.score_delta = np.array(row[player + '_scoreLead'][start_ind:end_ind]) - np.array(
+            row[enemy + '_scoreLead'][start_ind:end_ind])
+        self.utility_delta = np.array(row[player + '_utility'][start_ind:end_ind]) - np.array(
+            row[enemy + '_utility'][start_ind:end_ind])
+        self.selfplay_delta = np.array(row[player + '_scoreSelfplay'][start_ind:end_ind]) - np.array(
+            row[enemy + '_scoreSelfplay'][start_ind:end_ind])
+        self.stddev_delta = np.array(row[player + '_scoreStdev'][start_ind:end_ind]) - np.array(
+            row[enemy + '_scoreStdev'][start_ind:end_ind])
+        self.move = row[player + '_move'].split()
         self.cnt_moves = end_ind - start_ind
-        self.move = row['W_move'].split()
-
-        for i in range(start_ind, end_ind):
-            self.winrate_delta.append(row['W_winrate'][i] - row['B_winrate'][i])
-            self.score_delta.append(row['W_scoreLead'][i] - row['B_scoreLead'][i])
-            self.utility_delta.append(row['W_utility'][i] - row['B_utility'][i])
-            self.selfplay_delta.append(row['W_scoreSelfplay'][i] - row['B_scoreSelfplay'][i])
-            self.stddev_delta.append(row['W_scoreStdev'][i] - row['B_scoreStdev'][i])
 
 
 def add_all_game_stats(df):
@@ -255,6 +253,35 @@ def delete_non_scalar_parameters(df):
              'W_winrate', 'B_winrate', 'Result'], axis=1, inplace=True)
 
 
+def add_delta_lists_to_row(row, moves):
+    row['winrate'] = moves.winrate_delta
+    row['score'] = moves.score_delta
+    row['winrate_sqr'] = np.array([x ** 2 for x  in moves.winrate_delta])
+    row['score_sqr'] = np.array([x ** 2 for x  in moves.score_delta])
+    row['utility'] = moves.utility_delta
+    row['selfplay'] = moves.selfplay_delta
+    row['stddev'] = moves.stddev_delta
+    row['dist_from_prev'] = get_distance_of_moves(moves.move)
+    row['dist_more_5'] = [int(x > 5) + 1 for x in row['dist_from_prev']]
+
+
+def add_lists_to_df(df):
+    df['winrate'] = None
+    df['score'] = None
+    df['utility'] = None
+    df['selfplay'] = None
+    df['stddev'] = None
+    df['dist_from_prev'] = None
+    df['rank'] = None
+    df['game_length'] = None
+    df['score_sqr'] = None
+    df['winrate_sqr'] = None
+    df['dist_more_5'] = None
+    for i, row in tqdm(df.iterrows()):
+        add_meta(row)
+        add_delta_lists_to_row(row, MovesInfo(row))
+
+
 def get_feature_df(df):
     convert_to_lists(df)
     add_all_game_stats(df)
@@ -262,5 +289,15 @@ def get_feature_df(df):
     add_last_moves_stats(df, 10)
     add_last_moves_stats(df, 20)
     add_dist_stats(df)
+    delete_non_scalar_parameters(df)
+    return df
+
+
+def get_df_with_lists(df):
+    convert_to_lists(df)
+    add_all_game_stats(df)
+    add_last_moves_stats(df, 20)
+    add_dist_stats(df)
+    add_lists_to_df(df)
     delete_non_scalar_parameters(df)
     return df
