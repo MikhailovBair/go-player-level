@@ -40,6 +40,8 @@ def add_advanced_stats(row, moves, pref=""):
 
 
 def get_int_from_rank(rank):
+    if rank[1] == 'p' or rank[1] == 'P' or rank[0] == 'P':
+        return 10
     if rank[1] == 'k':
         return -int(rank[0]) + 1
     else:
@@ -53,12 +55,15 @@ def get_rank_from_int(x):
         return str(-x + 1) + "k"
 
 
-def add_meta(row):
+def add_meta(row, player='W'):
     if row['Result'] == '?':
         row['game_result'] = 0
     else:
         row['game_result'] = int(row['Result'])
-    row['rank'] = get_int_from_rank(row['W_rating'])
+        if player == 'B':
+            row['game_result'] = -row['game_result']
+
+    row['rank'] = get_int_from_rank(row[player + '_rating'])
     row['game_length'] = len(row['W_move']) + len(row['B_move'])
 
 
@@ -79,28 +84,58 @@ def convert_to_lists(df):
 class MovesInfo:
     def __init__(self, row, n_moves=None, player='W'):
         enemy = 'B' if player == 'W' else 'W'
-        moves_len = min(len(row[player + '_winrate']), len(row[enemy + '_winrate']))
+        if player == 'B':
+            moves_len = min(len(row['B_winrate']), len(row['W_winrate']) + 1)
+        else:
+            moves_len = min(len(row['W_winrate']), len(row['B_winrate']))
+
         if n_moves is None:
             start_ind = 0
         else:
             start_ind = max(moves_len - n_moves - 1, 0)
 
         end_ind = moves_len
+        w_0 = []
+        sc_0 = []
+        ut_0 = []
+        std_0 = []
+        sf_0 = []
+        if player == 'B':
+            if start_ind == 0:
+                w_0 = [0.47]
+                sc_0 = [0.]
+                ut_0 = [0.]
+                std_0 = [19. - 0.07666535852999867 * 2]
+                sf_0 = [0.]
+            else:
+                w_0 = [row[enemy + '_winrate'][start_ind - 1]]
+                sc_0 = [row[enemy + '_scoreLead'][start_ind - 1]]
+                ut_0 = [row[enemy + '_utility'][start_ind - 1]]
+                std_0 = [row[enemy + '_scoreStdev'][start_ind - 1]]
+                sf_0 = [row[enemy + '_scoreSelfplay'][start_ind - 1]]
+
         self.winrate_delta = np.array(row[player + '_winrate'][start_ind:end_ind]) - np.array(
-            row[enemy + '_winrate'][start_ind:end_ind])
+            (w_0 + row[enemy + '_winrate'])[start_ind:end_ind])
         self.score_delta = np.array(row[player + '_scoreLead'][start_ind:end_ind]) - np.array(
-            row[enemy + '_scoreLead'][start_ind:end_ind])
+            (sc_0 + row[enemy + '_scoreLead'])[start_ind:end_ind])
         self.utility_delta = np.array(row[player + '_utility'][start_ind:end_ind]) - np.array(
-            row[enemy + '_utility'][start_ind:end_ind])
+            (ut_0 + row[enemy + '_utility'])[start_ind:end_ind])
         self.selfplay_delta = np.array(row[player + '_scoreSelfplay'][start_ind:end_ind]) - np.array(
-            row[enemy + '_scoreSelfplay'][start_ind:end_ind])
+            (sf_0 + row[enemy + '_scoreSelfplay'])[start_ind:end_ind])
         self.stddev_delta = np.array(row[player + '_scoreStdev'][start_ind:end_ind]) - np.array(
-            row[enemy + '_scoreStdev'][start_ind:end_ind])
+            (std_0 + row[enemy + '_scoreStdev'])[start_ind:end_ind])
+
+        if player == 'B':
+            self.winrate_delta = -self.winrate_delta
+            self.score_delta = -self.score_delta
+            self.utility_delta = -self.utility_delta
+            self.selfplay_delta = -self.selfplay_delta
+
         self.move = row[player + '_move'].split()
         self.cnt_moves = end_ind - start_ind
 
 
-def add_all_game_stats(df):
+def add_all_game_stats(df, player='W'):
     df['winrate_mean'] = None
     df['score_midmean'] = None
     df['score_mean'] = None
@@ -127,9 +162,9 @@ def add_all_game_stats(df):
     df['score_five_worst_mean'] = None
 
     for i, row in tqdm(df.iterrows()):
-        add_meta(row)
-        add_basic_stats(row, MovesInfo(row))
-        add_advanced_stats(row, MovesInfo(row))
+        add_meta(row, player=player)
+        add_basic_stats(row, MovesInfo(row, player=player))
+        add_advanced_stats(row, MovesInfo(row, player=player))
 
 
 def get_start_of_yose(margin_moves, no_change_count=5):
@@ -175,7 +210,7 @@ def count_of_marginal_moves(moves):
     return ans
 
 
-def add_yose_stats(df):
+def add_yose_stats(df, player='W'):
     pref = 'yose_'
     reset_basic_stats(df, pref)
     df['yose_length'] = None
@@ -184,7 +219,7 @@ def add_yose_stats(df):
     for i, row in tqdm(df.iterrows()):
         marginal_moves = count_of_marginal_moves(row['W_move'].split())
         n_moves = get_start_of_yose(marginal_moves, 10)
-        add_basic_stats(row, MovesInfo(row, n_moves), pref)
+        add_basic_stats(row, MovesInfo(row, n_moves, player=player), pref)
         row['yose_length'] = n_moves
         row['yose_start'] = len(row['W_move'].split()) - n_moves
         row['yose_has'] = row['yose_start'] != 0
@@ -208,43 +243,43 @@ def get_distance_from_enemy(my_moves, enemy_moves):
     return ans
 
 
-def add_last_moves_stats(df, n_moves, pref=None):
+def add_last_moves_stats(df, n_moves, pref=None, player='W'):
     if pref is None:
         pref = str(n_moves) + "_"
     reset_basic_stats(df, pref)
     for i, row in tqdm(df.iterrows()):
-        add_basic_stats(row, MovesInfo(row, n_moves), pref)
+        add_basic_stats(row, MovesInfo(row, n_moves, player=player), pref)
 
 
-def add_dist_stats_to_row(row):
-    dist = get_distance_of_moves(row['W_move'].split())
+def add_dist_stats_to_row(row, player='W'):
+    dist = get_distance_of_moves(row[player + '_move'].split())
     dist_enemy = get_distance_from_enemy(row['W_move'].split(), row['B_move'].split())
     dist.sort()
 
     row['dist_mean'] = np.mean(dist)
     row['dist_var'] = np.var(dist)
     row['dist_median'] = dist[len(dist) // 2]
-    row['dist_procent_more_than_10'] = np.mean([x > 10 for x in dist])
-    row['dist_procent_more_than_5'] = np.mean([x > 5 for x in dist])
-    row['dist_procent_more_than_20'] = np.mean([x > 20 for x in dist])
+    row['dist_percent_more_than_10'] = np.mean([x > 10 for x in dist])
+    row['dist_percent_more_than_5'] = np.mean([x > 5 for x in dist])
+    row['dist_percent_more_than_20'] = np.mean([x > 20 for x in dist])
 
     row['dist_from_enemy_mean'] = np.mean(dist_enemy)
     row['dist_from_enemy_var'] = np.var(dist_enemy)
 
 
-def add_dist_stats(df):
+def add_dist_stats(df, player='W'):
     df['dist_mean'] = None
     df['dist_var'] = None
     df['dist_median'] = None
-    df['dist_procent_more_than_5'] = None
-    df['dist_procent_more_than_10'] = None
-    df['dist_procent_more_than_20'] = None
+    df['dist_percent_more_than_5'] = None
+    df['dist_percent_more_than_10'] = None
+    df['dist_percent_more_than_20'] = None
 
     df['dist_from_enemy_mean'] = None
     df['dist_from_enemy_var'] = None
 
     for i, row in tqdm(df.iterrows()):
-        add_dist_stats_to_row(row)
+        add_dist_stats_to_row(row, player=player)
 
 
 def delete_non_scalar_parameters(df):
@@ -256,8 +291,8 @@ def delete_non_scalar_parameters(df):
 def add_delta_lists_to_row(row, moves):
     row['winrate'] = moves.winrate_delta
     row['score'] = moves.score_delta
-    row['winrate_sqr'] = np.array([x ** 2 for x  in moves.winrate_delta])
-    row['score_sqr'] = np.array([x ** 2 for x  in moves.score_delta])
+    row['winrate_sqr'] = np.array([x ** 2 for x in moves.winrate_delta])
+    row['score_sqr'] = np.array([x ** 2 for x in moves.score_delta])
     row['utility'] = moves.utility_delta
     row['selfplay'] = moves.selfplay_delta
     row['stddev'] = moves.stddev_delta
@@ -265,7 +300,7 @@ def add_delta_lists_to_row(row, moves):
     row['dist_more_5'] = [int(x > 5) + 1 for x in row['dist_from_prev']]
 
 
-def add_lists_to_df(df):
+def add_lists_to_df(df, player='W'):
     df['winrate'] = None
     df['score'] = None
     df['utility'] = None
@@ -278,26 +313,26 @@ def add_lists_to_df(df):
     df['winrate_sqr'] = None
     df['dist_more_5'] = None
     for i, row in tqdm(df.iterrows()):
-        add_meta(row)
-        add_delta_lists_to_row(row, MovesInfo(row))
+        add_meta(row, player='W')
+        add_delta_lists_to_row(row, MovesInfo(row, player=player))
 
 
-def get_feature_df(df):
+def get_feature_df(df, player='W'):
     convert_to_lists(df)
-    add_all_game_stats(df)
-    add_yose_stats(df)
-    add_last_moves_stats(df, 10)
-    add_last_moves_stats(df, 20)
-    add_dist_stats(df)
+    add_all_game_stats(df, player)
+    add_yose_stats(df, player)
+    add_last_moves_stats(df, 10, player)
+    add_last_moves_stats(df, 20, player)
+    add_dist_stats(df, player)
     delete_non_scalar_parameters(df)
     return df
 
 
-def get_df_with_lists(df):
+def get_df_with_lists(df, player='W'):
     convert_to_lists(df)
-    add_all_game_stats(df)
-    add_last_moves_stats(df, 20)
-    add_dist_stats(df)
-    add_lists_to_df(df)
+    add_all_game_stats(df, player)
+    add_last_moves_stats(df, 20, player)
+    add_dist_stats(df, player)
+    add_lists_to_df(df, player)
     delete_non_scalar_parameters(df)
     return df
