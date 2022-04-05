@@ -313,7 +313,7 @@ def add_lists_to_df(df, player='W'):
     df['winrate_sqr'] = None
     df['dist_more_5'] = None
     for i, row in tqdm(df.iterrows()):
-        add_meta(row, player='W')
+        add_meta(row, player=player)
         add_delta_lists_to_row(row, MovesInfo(row, player=player))
 
 
