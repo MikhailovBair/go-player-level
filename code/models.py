@@ -108,3 +108,25 @@ class RnnKerasClassifierRunner:
     def predict(self, df):
         y = self.get_probs(df)
         return np.array([np.sum(x * np.arange(self.min_rank, self.max_rank + 1)) for x in y], dtype="int32")
+
+
+class ActiveLearner:
+  def fit(self, model, X_train, y_train, X_test, y_test, epochs = 3, iterations = 5):
+    length = len(X_train)
+    coef = 0.2
+    sub_train_sz = int(length * coef)
+    sub_Xtrain = X_train[:sub_train_sz]
+    sub_ytrain = y_train[:sub_train_sz]
+    for iter in range(iterations):
+      print("Iteration", iter)
+      model.fit(sub_Xtrain, sub_ytrain, epochs = epochs, batch_size = 128)
+      indexes = np.random.choice(np.arange(len(X_train)), sub_train_sz, replace=False)
+      sub_Xtrain = X_train.iloc[indexes]
+      sub_ytrain = y_train.iloc[indexes]
+      y_pred = model.predict(sub_Xtrain)
+      diff = abs(np.array(sub_ytrain) - np.array(y_pred))
+      med_diff = np.median(diff)
+      indexes = np.where(diff > med_diff)[0]
+      sub_Xtrain = sub_Xtrain.iloc[indexes]
+      sub_ytrain = sub_ytrain.iloc[indexes]
+      print("MAE on val data is", np.mean(abs(np.array(y_test) - np.array(model.predict(X_test)))))
