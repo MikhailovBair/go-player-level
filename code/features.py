@@ -80,23 +80,28 @@ def add_meta(row, player='W'):
             row['game_result'] = -row['game_result']
     row['color'] = int_from_player(player)
     row['rank'] = get_int_from_rank(row[player + '_rating'])
-    row['game_length'] = len(row['W_move']) + len(row['B_move'])
+    row['game_length'] = len(row['W_move'].split()) + len(row['B_move'].split())
 
 
 def convert_to_lists(df):
     for i, row in tqdm(df.iterrows()):
-        row['kek'] = i
-        row['W_scoreLead'] = [float(x) for x in row['W_scoreLead'].split()]
-        row['B_scoreLead'] = [float(x) for x in row['B_scoreLead'].split()]
-        row['W_scoreSelfplay'] = [float(x) for x in row['W_scoreSelfplay'].split()]
-        row['B_scoreSelfplay'] = [float(x) for x in row['B_scoreSelfplay'].split()]
-        row['W_scoreStdev'] = [float(x) for x in row['W_scoreStdev'].split()]
-        row['B_scoreStdev'] = [float(x) for x in row['B_scoreStdev'].split()]
-        row['W_utility'] = [float(x) for x in row['W_utility'].split()]
-        row['B_utility'] = [float(x) for x in row['B_utility'].split()]
-        row['W_winrate'] = [float(x) for x in row['W_winrate'].split()]
-        row['B_winrate'] = [float(x) for x in row['B_winrate'].split()]
-        df.loc[i] = row
+        try:
+            row['W_scoreLead'] = [float(x) for x in row['W_scoreLead'].split()]
+            row['B_scoreLead'] = [float(x) for x in row['B_scoreLead'].split()]
+            row['W_scoreSelfplay'] = [float(x) for x in row['W_scoreSelfplay'].split()]
+            row['B_scoreSelfplay'] = [float(x) for x in row['B_scoreSelfplay'].split()]
+            row['W_scoreStdev'] = [float(x) for x in row['W_scoreStdev'].split()]
+            row['B_scoreStdev'] = [float(x) for x in row['B_scoreStdev'].split()]
+            row['W_utility'] = [float(x) for x in row['W_utility'].split()]
+            row['B_utility'] = [float(x) for x in row['B_utility'].split()]
+            row['W_winrate'] = [float(x) for x in row['W_winrate'].split()]
+            row['B_winrate'] = [float(x) for x in row['B_winrate'].split()]
+            df.loc[i] = row
+        except Exception as e:
+            print(e)
+            df = df.drop(index=[i])          
+    return df
+    
 
 class MovesInfo:
     def __init__(self, row, n_moves=None, player='W'):
@@ -166,10 +171,6 @@ def add_all_game_stats(df, player = 'W'):
     df['winrate75p'] = None
     df['winrate_midmean'] = None
     df['score50p'] = None
-    df['game_length'] = None
-    df['rank'] = None
-    df['color'] = None
-    df['game_result'] = None
     df['selfplay_mean'] = None
     df['stddev_mean'] = None
     df['stddev50p'] = None
@@ -178,12 +179,11 @@ def add_all_game_stats(df, player = 'W'):
     df['score_min'] = None
     df['score_five_best_mean'] = None
     df['score_five_worst_mean'] = None
-
     for i, row in tqdm(df.iterrows()):
-        add_meta(row, player=player)
         add_basic_stats(row, MovesInfo(row, player=player))
         add_advanced_stats(row, MovesInfo(row, player=player))
         df.loc[i] = row
+    return df            
 
 
 def get_start_of_yose(margin_moves, no_change_count=5):
@@ -243,6 +243,7 @@ def add_yose_stats(df, player = 'W'):
         row['yose_start'] = len(row['W_move'].split()) - n_moves
         row['yose_has'] = row['yose_start'] != 0
         df.loc[i] = row
+    return df    
 
 
 def delta_moves(a, b):
@@ -270,6 +271,8 @@ def add_last_moves_stats(df, n_moves, pref=None, player='W'):
     for i, row in tqdm(df.iterrows()):
         add_basic_stats(row, MovesInfo(row, n_moves, player=player), pref)
         df.loc[i] = row
+        
+    return df    
 
 
 def add_dist_stats_to_row(row, player='W'):
@@ -303,15 +306,17 @@ def add_dist_stats(df, player='W'):
        if len(row['W_move']) > 20:
         add_dist_stats_to_row(row, player=player)
         df.loc[i] = row
+    return df    
 
 
 def delete_non_scalar_parameters(df):
     df.drop(['W_rating', 'B_rating', 'W_move', 'B_move', 'W_scoreLead', 'B_scoreLead', 'W_scoreSelfplay',
              'B_scoreSelfplay', 'W_scoreStdev', 'B_scoreStdev', 'W_utility', 'B_utility',
              'W_winrate', 'B_winrate', 'Result'], axis=1, inplace=True)
+    return df         
 
 
-def add_delta_lists_to_row(row, moves):
+def add_delta_lists_to_row(row, moves, player='W'):
     row['winrate'] = moves.winrate_delta
     row['score'] = moves.score_delta
     row['winrate_sqr'] = np.array([x ** 2 for x  in moves.winrate_delta])
@@ -321,6 +326,8 @@ def add_delta_lists_to_row(row, moves):
     row['stddev'] = moves.stddev_delta
     row['dist_from_prev'] = get_distance_of_moves(moves.move)
     row['dist_more_5'] = [int(x > 5) + 1 for x in row['dist_from_prev']]
+    enemy = 'B' if player == 'W' else 'W'
+    row['dist_enemy'] = get_distance_from_enemy(row[player + '_move'].split(), row[enemy + '_move'].split())
 
 
 def add_lists_to_df(df, player='W'):
@@ -330,34 +337,48 @@ def add_lists_to_df(df, player='W'):
     df['selfplay'] = None
     df['stddev'] = None
     df['dist_from_prev'] = None
-    df['rank'] = None
-    df['color'] = None
-    df['game_length'] = None
     df['score_sqr'] = None
     df['winrate_sqr'] = None
     df['dist_more_5'] = None
+    df['dist_enemy'] = None
     for i, row in tqdm(df.iterrows()):
-        add_meta(row, player)
-        add_delta_lists_to_row(row, MovesInfo(row, player=player))
+        add_delta_lists_to_row(row, MovesInfo(row, player=player), player)
         df.loc[i] = row
+    return df    
+
+
+def add_meta_to_df(df, player='W'):
+    df['game_length'] = None
+    df['rank'] = None
+    df['color'] = None
+    df['game_result'] = None
+    for i, row in tqdm(df.iterrows()):
+        try:
+            add_meta(row, player)
+            df.loc[i] = row
+        except Exception as e:
+            print(e)
+            df = df.drop(index=[i])
+    return df        
 
 
 def get_feature_df(df, player='W'):
-    convert_to_lists(df)
-    add_all_game_stats(df, player)
-    add_yose_stats(df, player)
-    add_last_moves_stats(df, 10, player)
-    add_last_moves_stats(df, 20, player)
-    add_dist_stats(df, player)
-    delete_non_scalar_parameters(df)
+    df = add_meta_to_dff(df, player)
+    df = convert_to_lists(df)
+    df = add_all_game_stats(df, player)
+    df = add_yose_stats(df, player)
+    df = add_last_moves_stats(df, 10, player)
+    df = add_last_moves_stats(df, 20, player)
+    df = add_dist_stats(df, player)
+    df = delete_non_scalar_parameters(df)
     return df
 
 
 def get_df_with_lists(df, player='W'):
-    convert_to_lists(df)
-    add_all_game_stats(df, player)
-    add_last_moves_stats(df, 20, player = player)
-    add_dist_stats(df, player)
-    add_lists_to_df(df, player)
-    delete_non_scalar_parameters(df)
+    df = add_meta_to_df(df, player)
+    df = convert_to_lists(df)
+    df = add_all_game_stats(df, player)
+    df = add_last_moves_stats(df, 20, player = player)
+    df = add_dist_stats(df, player)
+    df = add_lists_to_df(df, player)
     return df

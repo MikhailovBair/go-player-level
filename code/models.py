@@ -1,7 +1,12 @@
+import sys
+sys.path.insert(1, '../code')
+
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers
+import features
+import pandas as pd
 
 
 def get_tensor(df, features, sequence_len):
@@ -57,7 +62,7 @@ class RnnKerasRunner:
 
     def predict(self, df):
         X = get_tensor(df, self.features, self.sequence_len)
-        return np.array([y[0] for y in self.model.predict(X)])
+        return np.array([round(y[0]) for y in self.model.predict(X)])
 
 
 class RnnKerasClassifierRunner:
@@ -130,3 +135,17 @@ class ActiveLearner:
       sub_Xtrain = sub_Xtrain.iloc[indexes]
       sub_ytrain = sub_ytrain.iloc[indexes]
       print("MAE on val data is", np.mean(abs(np.array(y_test) - np.array(model.predict(X_test)))))
+
+
+class TwoModelsCombiner:
+    def __init__(self, W_model, B_model):
+        self.W_model = W_model
+        self.B_model = B_model
+        
+    def predict(self, data):
+        data_W = data[data['color'] == features.int_from_player('W')]
+        data_B = data[data['color'] == features.int_from_player('B')]
+        W_pred = pd.DataFrame({'prediction': self.W_model.predict(data_W)}, index=data_W.index)
+        B_pred = pd.DataFrame({'prediction': self.B_model.predict(data_B)}, index=data_B.index)
+        preds = np.array(pd.concat([W_pred, B_pred], ignore_index=False))
+        return preds

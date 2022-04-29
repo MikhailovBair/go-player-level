@@ -1,0 +1,3 @@
+'score', 'winrate', 'utility', 'stddev', 'selfplay', 'dist_from_prev', 'W_winrate', 'B_winrate', 'W_scoreLead', 'B_scoreLead', 'W_scoreSelfplay', 'B_scoreSelfplay', 'W_scoreStdev', 'B_scoreStdev', 'dist_enemy'
+W_model_v2.h5
+B_model_v2.h5

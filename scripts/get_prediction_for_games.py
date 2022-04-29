@@ -10,6 +10,7 @@ from keras.models import load_model
 import pandas as pd
 from tqdm import tqdm
 from collections import defaultdict
+import numpy as np
 
 
 def createParser ():
@@ -31,12 +32,29 @@ def get_rnn_classifier_model(config_path):
     config = load_model(config_path)
     model = models.RnnKerasClassifierRunner(min_rank=-15, max_rank=9, model=config, sequence_len=250)
     return model
+    
+    
+def erase_filename(path):
+    last_ch = max(path.rfind('/'), path.rfind(r'\x'[0]))
+    print(last_ch)
+    return path[:last_ch + 1]
+    
+    
+def get_combined_model(config_path):
+    config = open(config_path).readlines()
+    models_dir = erase_filename(config_path)
+    features = config[0].strip().replace("'", "").split(', ')
+    W_model = models.RnnKerasRunner(model = load_model(models_dir + config[1].strip()), sequence_len=150, features=features)
+    B_model = models.RnnKerasRunner(model = load_model(models_dir + config[2].strip()), sequence_len=150, features=features)
+    model = models.TwoModelsCombiner(W_model, B_model)
+    return model    
 
 
 def get_model(model_type, config_path):
     getters = dict({
         'rnn_regression': get_rnn_regression_model,
         'rnn_classifier': get_rnn_classifier_model,
+        'combined_model': get_combined_model,
     })
     if model_type not in getters.keys():
         print('Wrong model type! \"{}\" type does not exist!'.format(model_type))
@@ -69,7 +87,7 @@ model = get_model(model_type, config_path)
 df_to_pred["prediction"] = model.predict(df_to_pred)
 
 games_res = defaultdict(dict)
-
+mz = dict({'WB':[], 'BB':[], 'BW':[], 'WW':[]})
 for i, row in tqdm(df_to_pred.iterrows()):
     player = features.player_from_int(row['color'])
 
@@ -79,8 +97,40 @@ for i, row in tqdm(df_to_pred.iterrows()):
     games_res[row['game_id']]['id'] = row['game_id']
     games_res[row['game_id']][player + '_nickname'] = row[player + '_nickname']
 
+
+player_rating = defaultdict(list)
+    
+for row in games_res.values():    
+    for color in ['W', 'B']:
+        if row[color + '_predicted_rating'] is not None:
+            player_rating[row[color + '_nickname']].append(features.get_int_from_rank(row[color + '_predicted_rating']))
+    for real_color in ['W', 'B']:
+        if row[real_color + '_real_rating'] is not None:
+            for color_to_pred in ['W', 'B']:
+                if row[color_to_pred + '_predicted_rating'] is not None:
+                    mz[real_color + color_to_pred].append(abs(features.get_int_from_rank(row[color_to_pred + '_predicted_rating']) - features.get_int_from_rank(row[real_color + '_real_rating'])))
+
+
 result_df = pd.DataFrame(columns=['game_id', 'W_real_rating', 'B_real_rating', 'W_predicted_rating',
                                   'B_predicted_rating', 'W_nickname', 'B_nickname'])
+                                  
 for result in games_res.values():
     result_df = result_df.append(result, ignore_index=True)
+    
+    
+players_pd = pd.DataFrame(columns=['nickname', 'games_played', 'mean_predicted_rating', 'var_predicted_rating', 'min_pred_rating', 'max_pred_rating'])    
+for nick, ratings in player_rating.items():
+    row = {
+        'nickname': nick,
+        'games_played': len(ratings),
+        'mean_predicted_rating': features.get_rank_from_int(round(np.mean(ratings))),
+        'var_predicted_rating': np.var(ratings),
+        'min_pred_rating': np.min(ratings),
+        'max_pred_rating': np.max(ratings),
+    };
+    players_pd = players_pd.append(row, ignore_index=True)
+    
+for k, v in mz.items():
+    print(k, np.mean(v))
 result_df.to_csv(out_directory + '/result.csv')
+players_pd.to_csv(out_directory + '/players_df.csv')
