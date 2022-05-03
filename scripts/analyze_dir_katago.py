@@ -45,10 +45,17 @@ for file in files:
         target_files.append(file)
 
 for target_file in target_files:
-    os.system('analyze-sgf -s -a \"maxVisits:{}\" '.format(playout) + in_directory + '/' + target_file) 
-    json_file = getKatagoJsonFile(target_file)
-    analyz_file = getKatagoAnalyzedFile(target_file)
-    os.replace(in_directory + '/' + json_file, out_directory + '/' + json_file)
-    os.replace(in_directory + '/' + analyz_file, out_directory + '/' + analyz_file)
-    if delete_files:
-        os.remove(in_directory + '/' + target_file) 
+    try:
+        full_filename = in_directory + '/' + target_file
+        os.system('python3 get_correct_main_sequence_from_sgf.py ' + full_filename)
+        os.replace(full_filename[:-4] + "_correct.sgf", full_filename)
+        #os.remove(full_filename[:-4] + "_correct.sgf") 
+        os.system('analyze-sgf -s -a \"maxVisits:{}\" '.format(playout) + in_directory + '/' + target_file) 
+        json_file = getKatagoJsonFile(target_file)
+        analyz_file = getKatagoAnalyzedFile(target_file)
+        os.replace(in_directory + '/' + json_file, out_directory + '/' + json_file)
+        os.replace(in_directory + '/' + analyz_file, out_directory + '/' + analyz_file)
+        if delete_files:
+            os.remove(in_directory + '/' + target_file) 
+    except Exception as e:
+        print(e)

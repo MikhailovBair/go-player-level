@@ -11,7 +11,7 @@ import pandas as pd
 from tqdm import tqdm
 from collections import defaultdict
 import numpy as np
-
+import json
 
 def createParser ():
     parser = argparse.ArgumentParser()
@@ -19,6 +19,7 @@ def createParser ():
     parser.add_argument('-o', '--outdir')
     parser.add_argument('-m', '--model')
     parser.add_argument('-c', '--config_model')
+    parser.add_argument('-j', '--need_json', action = "store_true")
     return parser
 
 
@@ -32,12 +33,18 @@ def get_rnn_classifier_model(config_path):
     config = load_model(config_path)
     model = models.RnnKerasClassifierRunner(min_rank=-15, max_rank=9, model=config, sequence_len=250)
     return model
+
+def get_file_and_dir(path):
+    last_ch = max(path.rfind('/'), path.rfind(r'\x'[0]))
+    return path[:last_ch + 1], path[last_ch + 1:]    
     
     
 def erase_filename(path):
-    last_ch = max(path.rfind('/'), path.rfind(r'\x'[0]))
-    print(last_ch)
-    return path[:last_ch + 1]
+    return get_file_and_dir(path)[0]
+    
+    
+def get_filename(path):
+    return get_file_and_dir(path)[1]
     
     
 def get_combined_model(config_path):
@@ -80,6 +87,7 @@ in_directory = namespace.indir
 out_directory = namespace.outdir
 model_type = namespace.model
 config_path = namespace.config_model
+need_json = namespace.need_json
 
 data = get_data(in_directory, out_directory)
 df_to_pred = pd.concat([features.get_df_with_lists(data.copy(), player='W'), features.get_df_with_lists(data.copy(), player='B')])
@@ -94,7 +102,7 @@ for i, row in tqdm(df_to_pred.iterrows()):
     games_res[row['game_id']][player + '_real_rating'] = \
         features.get_rank_from_int(row['rank']) if row['rank'] is not None else None
     games_res[row['game_id']][player + '_predicted_rating'] = features.get_rank_from_int(row['prediction'])
-    games_res[row['game_id']]['id'] = row['game_id']
+    games_res[row['game_id']]['id'] = get_filename(row['game_id'])
     games_res[row['game_id']][player + '_nickname'] = row[player + '_nickname']
 
 
@@ -115,6 +123,13 @@ result_df = pd.DataFrame(columns=['game_id', 'W_real_rating', 'B_real_rating', '
                                   'B_predicted_rating', 'W_nickname', 'B_nickname'])
                                   
 for result in games_res.values():
+    if need_json:
+        json_ans = {
+            'W_rank': result['W_predicted_rating'],
+            'B_rank': result['B_predicted_rating']
+        }
+        with open(out_directory + '/' + result['id'] + '.json', 'w') as f:
+            json.dump(json_ans, f)
     result_df = result_df.append(result, ignore_index=True)
     
     
