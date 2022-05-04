@@ -140,8 +140,8 @@ for nick, ratings in player_rating.items():
         'games_played': len(ratings),
         'mean_predicted_rating': features.get_rank_from_int(round(np.mean(ratings))),
         'var_predicted_rating': np.var(ratings),
-        'min_pred_rating': np.min(ratings),
-        'max_pred_rating': np.max(ratings),
+        'min_pred_rating': features.get_rank_from_int(round(np.min(ratings))),
+        'max_pred_rating': features.get_rank_from_int(round(np.max(ratings))),
     };
     players_pd = players_pd.append(row, ignore_index=True)
     
