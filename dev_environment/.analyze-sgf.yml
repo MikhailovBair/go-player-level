@@ -1,0 +1,51 @@
+# Please visit <https://github.com/9beach/analyze-sgf>.
+#
+# Options for path and arguments of KataGo.
+katago:	
+  # e.g., "C:\\Users\\hcho\\KataGo\\katago.exe"
+  path: "/katago/katago"
+  # e.g., "analysis -model C:\\Users\\hcho\\KataGo\\katago-best-network.bin.gz -config C:\\Users\\hcho\\KataGo\\analysis_example.cfg"
+  arguments: "analysis -model /katago/default_model.bin.gz -config /katago/analysis_example.cfg"
+
+# Options for KataGo Parallel Analysis Engine query.
+#
+# <https://github.com/lightvector/KataGo/blob/master/docs/Analysis_Engine.md>.
+analysis:
+  # e.g., "korean", "tromp-taylor", "chinese", ...
+  rules: "japanese"
+  # If input SGF/GIB has no komi field (KM), then uses below.
+  komi: 6.5
+  boardXSize: 19
+  boardYSize: 19
+  # Maximum number of root visits.
+  maxVisits: 500
+
+# Options for making reviewed SGF files.
+sgf:
+  # SGF can put good/bad/hotspot labels on moves for coloring game tree.
+  # When you open reviewed SGF in applications like Sabaki, you can check
+  # them. Please visit <https://sabaki.yichuanshen.de/>.
+  #
+  # If win rate drops by less than maxWinrateDropForGoodMove for a move, that
+  # move is good.
+  maxWinrateDropForGoodMove: 2.0
+  # If win rate drops by more than minWinrateDropForBadMove for a move, that
+  # move is bad.
+  minWinrateDropForBadMove: 5.0
+  # If win rate drops by more than minWinrateDropForBadHotSpot for a move,
+  # that move is a bad hotspot.
+  minWinrateDropForBadHotSpot: 20.0
+  # In SGF, the last move can't have variations. So we add a pass move after
+  # the last move, and then add the proposed variations to that pass move.
+  showVariationsAfterLastMove: false
+  # If `-a 'analyzeTurns:[0,5,10]'` option given, analyze-sgf analyzes the
+  # move 1, move 6, and move 11, and then add the variations for those moves.
+  # But 'analyzeTurns' is not given, analyze-sgf analyzes all the moves, and
+  # adds the variations for the moves whose win rate drop more than
+  # minWinrateDropForVariations.
+  minWinrateDropForVariations: 5.0
+  showBadVariations: false
+  maxVariationsForEachMove: 10
+  # If input file is "baduk.sgf" and fileSuffix is "-analyzed", then writes
+  # analysis to "baduk-analyzed.sgf"
+  fileSuffix: "-analyzed"
