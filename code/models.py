@@ -115,6 +115,49 @@ class RnnKerasClassifierRunner:
         return np.array([np.sum(x * np.arange(self.min_rank, self.max_rank + 1)) for x in y], dtype="int32")
 
 
+class BotClassificatorRunner:
+    __DEFAULT_FEATURES = ['score', 'winrate', 'utility', 'stddev', 'selfplay', 'dist_from_prev', 'winrate_sqr', 'score_sqr', 'dist_more_5', 'dist_enemy']
+
+    def __create_rnn(self, hidden_units, input_shape):
+        model = keras.Sequential()
+        model.add(tf.keras.layers.Masking(mask_value=0.,
+                                          input_shape=input_shape))
+        model.add(layers.BatchNormalization())
+        model.add(layers.Bidirectional(layers.LSTM(hidden_units)))  # , dropout = 0.15, reccurent_dropout = 0.15)))
+        model.add(layers.Dense(units=2, activation="linear"))
+        model.add(layers.Activation('softmax'))
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics='accuracy')
+        return model
+
+    def __init__(self, model=None, sequence_len=150, features=__DEFAULT_FEATURES):
+        self.features = features
+        self.sequence_len = sequence_len
+        if model is None:
+            self.model = self.__create_rnn(64, (sequence_len, len(features)))
+        else:
+            self.model = model
+
+    def fit(self, df, target, val_X, val_y, epochs=10, batch_size=32):
+        val_data = None
+        if val_X is not None:
+            val_y = keras.utils.to_categorical(tf.convert_to_tensor(np.array(val_y, dtype="int32"),
+                                                                    np.int32), num_classes=2)
+            val_X = get_tensor(val_X, self.features, self.sequence_len)
+            val_data = (val_X, val_y)
+        X = get_tensor(df, self.features, self.sequence_len)
+        y = keras.utils.to_categorical(tf.convert_to_tensor(np.array(target, dtype="int32"), np.int32),
+                                       num_classes=2)
+        self.model.fit(X, y, validation_data=val_data, epochs=epochs, batch_size=batch_size)
+
+    def get_probs(self, df):
+        X = get_tensor(df, self.features, self.sequence_len)
+        return self.model.predict(X)
+
+    def predict(self, df):
+        y = self.get_probs(df)
+        return y.argmax(axis=1)
+
+
 class ActiveLearner:
   def fit(self, model, X_train, y_train, X_test, y_test, epochs = 3, iterations = 5):
     length = len(X_train)
