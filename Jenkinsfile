@@ -24,7 +24,7 @@ pipeline {
 		}
 		stage('Tester') {
 			steps {
-				sh '`cat activate_cmd` && python3 -m pytest --junit-xml report.xml' 
+				sh '`cat activate_cmd` && PYTHONPATH=code/get_blunders python3 -m pytest --junit-xml report.xml' 
 			}
 			post {
 				always {
