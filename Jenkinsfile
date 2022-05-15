@@ -22,5 +22,16 @@ pipeline {
 				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt'
 			}
 		}
+		stage('Tester') {
+			steps {
+				sh '`cat activate_cmd` && python3 -m pytest --junit-xml report.xml' 
+			}
+			post {
+				always {
+						junit '**/report.xml'
+					}
+			}
+		}
+
 	}
 }
