@@ -4,7 +4,6 @@ from sgfmill import sgf
 import re
 
 FILE_FORMAT = '.sgf'
-PATH_TO_THRESHOLDS = 'ranks_table.csv'
 
 
 def convert_to_pair(turn: str):
@@ -113,7 +112,7 @@ def get_turns_list(game: sgf.Sgf_game):
     return turns_black, turns_white
 
 
-def get_blunder_and_mistake_thresholds(rank, path=PATH_TO_THRESHOLDS):
+def get_blunder_and_mistake_thresholds(rank, path):
     if rank is None:
         return None, None
     try:
@@ -126,8 +125,8 @@ def get_blunder_and_mistake_thresholds(rank, path=PATH_TO_THRESHOLDS):
     return blunder_threshold, mistake_threshold
 
 
-def get_blunders_and_mistakes(turns: list, rank):
-    blunder_threshold, mistake_threshold = get_blunder_and_mistake_thresholds(rank)
+def get_blunders_and_mistakes(turns: list, rank, path_to_thresholds):
+    blunder_threshold, mistake_threshold = get_blunder_and_mistake_thresholds(rank, path_to_thresholds)
     blunders = list()
     mistakes = list()
 
@@ -143,14 +142,14 @@ def get_blunders_and_mistakes(turns: list, rank):
     return blunders, mistakes
 
 
-def get_worst_errors(game: sgf.Sgf_game):
+def get_worst_errors(game: sgf.Sgf_game, path_to_thresholds):
     turns_black, turns_white = get_turns_list(game)
     turns_black.sort()
     turns_white.sort()
 
     rank_black, rank_white = get_player_ranks(game)
-    blunders_black, mistakes_black = get_blunders_and_mistakes(turns_black, rank_black)
-    blunders_white, mistakes_white = get_blunders_and_mistakes(turns_white, rank_white)
+    blunders_black, mistakes_black = get_blunders_and_mistakes(turns_black, rank_black, path_to_thresholds)
+    blunders_white, mistakes_white = get_blunders_and_mistakes(turns_white, rank_white, path_to_thresholds)
 
     dict_worst = {
         "blunders_black": convert_turns_to_list(blunders_black),
@@ -166,14 +165,14 @@ def get_katago_analyzed_file(source_filename):
     return source_filename[:-len(FILE_FORMAT)] + '-analyzed.sgf'
 
 
-def parse_game(path):
-    subprocess.run(['analyze-sgf', "-a", "maxVisits: 1", path])
-    with open(get_katago_analyzed_file(path), "rb") as f:
+def parse_game(path_to_game, path_to_thresholds):
+    subprocess.run(['analyze-sgf', "-a", "maxVisits: 1", path_to_game])
+    with open(get_katago_analyzed_file(path_to_game), "rb") as f:
         game = sgf.Sgf_game.from_bytes(f.read())
 
-    return get_worst_errors(game)
+    return get_worst_errors(game, path_to_thresholds)
 
 
 if __name__ == "__main__":
-    print(parse_game("tests/test_games/A.sgf"))
+    print(parse_game("tests/test_games/A.sgf", "ranks_table.csv"))
 
