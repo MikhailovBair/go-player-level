@@ -13,7 +13,7 @@ pipeline {
 			steps {
 				sh 'python3 -m virtualenv venv -p python3'
 				sh '. venv/bin/activate'
-				sh 'echo . vevn/bin/activate > activate_cmd'
+				sh 'echo . venv/bin/activate > activate_cmd'
 				sh 'cat activate_cmd'
 			}
 		}
