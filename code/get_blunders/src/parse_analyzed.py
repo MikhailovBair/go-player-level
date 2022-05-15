@@ -59,13 +59,13 @@ def get_index_dan(rank):
     for i in range(len(rank)):
         if rank[i] in ['k', 'd']:
             return i
-    return -1
+    raise AttributeError("incorrect rank {}".format(rank))
 
 
-def get_int_from_rank(rank):
+def get_int_from_rank(rank: str):
     ind = get_index_dan(rank)
     if ind < 0 or rank[0] == 'P' or not rank[:ind].isdigit():
-        return None
+        raise AttributeError("incorrect rank {}".format(rank))
     if rank[ind] == 'k':
         return int(-int(rank[:ind]) + 1)
     else:
@@ -131,13 +131,10 @@ def get_blunder_and_mistake_thresholds(rank: int):
 
 def get_blunders_and_mistakes(turns: list, rank: int):
     blunder_threshold, mistake_threshold = get_blunder_and_mistake_thresholds(rank)
-    best_alternatives = set()
     blunders = list()
     mistakes = list()
 
     for turn in turns:
-        # if turn.best_alternative_turn not in best_alternatives:
-        #     best_alternatives.add(turn.best_alternative_turn)
         if blunder_threshold is None or turn.score_drop >= blunder_threshold:
             blunders.append(turn)
         elif turn.score_drop >= mistake_threshold:
