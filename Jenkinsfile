@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Tester') {
 			steps {
-				sh '`cat activate_cmd` && PYTHONPATH=code/get_blunders python3 -m pytest --junit-xml report.xml --cov-branch --cov src --cov-report html tests/' 
+				sh '`cat activate_cmd` && PYTHONPATH=code/get_blunders python3 -m pytest --junit-xml report.xml --cov-branch --cov code/get_blunders/src --cov-report html code/get_blunders/tests/' 
 			}
 			post {
 				always {
