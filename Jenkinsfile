@@ -14,7 +14,7 @@ pipeline {
 		}
 		stage('Install Requirements') {
 			steps {
-				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt && cp code/get_blunders/katago/.analyze-sgf.yml /home/.analyze-sgf.yml'
+				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt'
 			}
 		}
 		stage('Tester') {
