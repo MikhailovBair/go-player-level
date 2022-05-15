@@ -5,16 +5,16 @@ Komi 6.5, W+Resign, 2022-04-04
 Pachi 3k (Black)
 * Less than 2% win rate drops (69.09%, 38/55)
 * Less than 5% win rate drops (83.64%, 46/55)
-* More than 5% win rate drops (14.55%, 8/55): #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* Top 10 win rate drops: #35 ⇣14.18%, #37 ⇣10.84%, #31 ⇣7.75%, #45 ⇣7.18%, #43 ⇣5.61%, #23 ⇣5.42%, #19 ⇣5.26%, #41 ⇣5.26%, #21 ⇣4.37%, #27 ⇣4.28%
-* Top 10 score drops: #107 ⇣9.63, #79 ⇣8.99, #59 ⇣8.67, #45 ⇣7.39, #47 ⇣6.51, #55 ⇣6.07, #75 ⇣5.59, #57 ⇣4.69, #105 ⇣4.66, #99 ⇣4.05
+* More than 5% win rate drops (14.55%, 8/55): #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* Top 10 win rate drops: #37 ⇣13.16%, #19 ⇣10.01%, #35 ⇣9.60%, #45 ⇣7.99%, #29 ⇣7.97%, #43 ⇣7.91%, #25 ⇣6.18%, #33 ⇣5.54%, #31 ⇣4.12%, #11 ⇣3.96%
+* Top 10 score drops: #45 ⇣8.06, #55 ⇣7.38, #47 ⇣7.37, #59 ⇣7.20, #107 ⇣6.10, #101 ⇣5.88, #105 ⇣4.98, #73 ⇣4.81, #75 ⇣4.39, #99 ⇣4.37
 
 Pachi 2d (White)
-* Less than 2% win rate drops (83.33%, 45/54)
-* Less than 5% win rate drops (94.44%, 51/54)
-* More than 5% win rate drops (5.56%, 3/54): #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-* Top 10 win rate drops: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%, #20 ⇣4.50%, #10 ⇣4.12%, #14 ⇣3.47%, #22 ⇣3.24%, #18 ⇣2.74%, #44 ⇣2.15%, #26 ⇣1.95%
-* Top 10 score drops: #94 ⇣8.87, #106 ⇣8.02, #58 ⇣6.24, #108 ⇣3.25, #90 ⇣3.01, #54 ⇣2.89, #60 ⇣2.49, #46 ⇣2.40, #70 ⇣2.24, #96 ⇣2.18
+* Less than 2% win rate drops (77.78%, 42/54)
+* Less than 5% win rate drops (96.30%, 52/54)
+* More than 5% win rate drops (3.70%, 2/54): #14 ⇣5.36%, #20 ⇣9.02%
+* Top 10 win rate drops: #20 ⇣9.02%, #14 ⇣5.36%, #18 ⇣4.68%, #34 ⇣4.25%, #38 ⇣4.03%, #12 ⇣3.50%, #32 ⇣3.41%, #22 ⇣3.10%, #44 ⇣3.06%, #26 ⇣2.85%
+* Top 10 score drops: #94 ⇣10.78, #106 ⇣6.10, #46 ⇣3.94, #102 ⇣3.60, #54 ⇣3.45, #104 ⇣3.34, #58 ⇣3.23, #72 ⇣2.40, #60 ⇣2.20, #48 ⇣2.11
 
 Analyzed by KataGo Parallel Analysis Engine (1 max visits).]
 ;B[pd]C[Move 1
@@ -27,190 +27,190 @@ Analyzed by KataGo Parallel Analysis Engine (1 max visits).]
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
 ]TE[1]SBKV[48.24]
 ;W[dp]C[Move 2
 
-* Win rate: W 51.65%
-* Score lead: W 0.04
-* Win rate drop: W ⇣0.11%
-* Score drop: W ⇣0.26
+* Win rate: W 51.78%
+* Score lead: W 0.05
+* Win rate drop: W ⇣-0.01%
+* Score drop: W ⇣0.24
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[48.35]
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[48.22]
 ;B[dd]C[Move 3
 
-* Win rate: W 52.76%
-* Score lead: W 0.43
-* Win rate drop: B ⇣1.10%
-* Score drop: B ⇣0.39
+* Win rate: W 52.54%
+* Score lead: W 0.40
+* Win rate drop: B ⇣0.76%
+* Score drop: B ⇣0.35
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[47.24]
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[47.46]
 ;W[pp]C[Move 4
 
-* Win rate: W 51.63%
-* Score lead: W 0.02
-* Win rate drop: W ⇣1.13%
-* Score drop: W ⇣0.41
+* Win rate: W 51.93%
+* Score lead: W 0.11
+* Win rate drop: W ⇣0.61%
+* Score drop: W ⇣0.29
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[48.37]
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[48.07]
 ;B[qn]C[Move 5
 
 * Win rate: W 53.40%
 * Score lead: W 0.54
-* Win rate drop: B ⇣1.77%
-* Score drop: B ⇣0.53
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[46.60]
-;W[nq]C[Move 6
-
-* Win rate: W 51.71%
-* Score lead: W 0.08
-* Win rate drop: W ⇣1.68%
-* Score drop: W ⇣0.46
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[48.29]
-;B[rp]C[Move 7
-
-* Win rate: W 54.40%
-* Score lead: W 0.53
-* Win rate drop: B ⇣2.69%
-* Score drop: B ⇣0.45
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[45.60]
-;W[qq]C[Move 8
-
-* Win rate: W 52.64%
-* Score lead: W 0.18
-* Win rate drop: W ⇣1.76%
-* Score drop: W ⇣0.35
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[47.36]
-;B[qk]C[Move 9
-
-* Win rate: W 53.71%
-* Score lead: W 0.50
-* Win rate drop: B ⇣1.06%
-* Score drop: B ⇣0.32
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[46.29]
-;W[nc]C[Move 10
-
-* Win rate: B 50.42%
-* Score lead: B 0.17
-* Win rate drop: W ⇣4.12%
-* Score drop: W ⇣0.66
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[50.42]
-;B[pf]C[Move 11
-
-* Win rate: W 53.02%
-* Score lead: W 0.50
-* Win rate drop: B ⇣3.44%
-* Score drop: B ⇣0.67
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[46.98]
-;W[pb]C[Move 12
-
-* Win rate: W 51.20%
-* Score lead: W 0.14
-* Win rate drop: W ⇣1.82%
-* Score drop: W ⇣0.37
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[48.80]
-;B[qc]C[Move 13
-
-* Win rate: W 52.16%
-* Score lead: W 0.30
-* Win rate drop: B ⇣0.96%
-* Score drop: B ⇣0.16
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[47.84]
-;W[kc]C[Move 14
-
-* Win rate: B 51.32%
-* Score lead: B 0.15
-* Win rate drop: W ⇣3.47%
-* Score drop: W ⇣0.45
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[51.32]
-;B[cn]C[Move 15
-
-* Win rate: W 51.17%
-* Score lead: W 0.28
-* Win rate drop: B ⇣2.48%
+* Win rate drop: B ⇣1.46%
 * Score drop: B ⇣0.43
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[46.60]
+;W[nq]C[Move 6
+
+* Win rate: W 51.75%
+* Score lead: W 0.07
+* Win rate drop: W ⇣1.64%
+* Score drop: W ⇣0.47
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[48.25]
+;B[rp]C[Move 7
+
+* Win rate: W 54.42%
+* Score lead: W 0.48
+* Win rate drop: B ⇣2.67%
+* Score drop: B ⇣0.41
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]SBKV[45.58]
+;W[qq]C[Move 8
+
+* Win rate: W 53.62%
+* Score lead: W 0.30
+* Win rate drop: W ⇣0.80%
+* Score drop: W ⇣0.18
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[46.38]
+;B[qk]C[Move 9
+
+* Win rate: W 53.03%
+* Score lead: W 0.51
+* Win rate drop: B ⇣-0.59%
+* Score drop: B ⇣0.21
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[46.97]
+;W[nc]C[Move 10
+
+* Win rate: W 51.25%
+* Score lead: W 0.02
+* Win rate drop: W ⇣1.78%
+* Score drop: W ⇣0.49
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[48.75]
+;B[pf]C[Move 11
+
+* Win rate: W 55.22%
+* Score lead: W 0.71
+* Win rate drop: B ⇣3.96%
+* Score drop: B ⇣0.69
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]SBKV[44.78]
+;W[pb]C[Move 12
+
+* Win rate: W 51.72%
+* Score lead: W 0.20
+* Win rate drop: W ⇣3.50%
+* Score drop: W ⇣0.51
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]SBKV[48.28]
+;B[qc]C[Move 13
+
+* Win rate: W 53.25%
+* Score lead: W 0.48
+* Win rate drop: B ⇣1.54%
+* Score drop: B ⇣0.28
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #14 ⇣5.36%, #20 ⇣9.02%
+]TE[1]SBKV[46.75]
+;W[kc]C[Move 14
+
+* Win rate: B 52.11%
+* Score lead: B 0.28
+* Win rate drop: W ⇣5.36%
+* Score drop: W ⇣0.76
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
+]BM[1]SBKV[52.11]
+;B[cn]C[Move 15
+
+* Win rate: W 51.17%
+* Score lead: W 0.28
+* Win rate drop: B ⇣3.28%
+* Score drop: B ⇣0.56
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
 ]SBKV[48.83]
 ;W[cl]C[Move 16
 
@@ -222,678 +222,658 @@ Bad moves left
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
 ]TE[1]SBKV[48.88]
 ;B[en]C[Move 17
 
-* Win rate: W 52.04%
-* Score lead: W 0.27
-* Win rate drop: B ⇣0.92%
-* Score drop: B ⇣0.26
+* Win rate: W 52.74%
+* Score lead: W 0.33
+* Win rate drop: B ⇣1.62%
+* Score drop: B ⇣0.31
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[47.96]
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
+]TE[1]SBKV[47.26]
 ;W[fp]C[Move 18
 
-* Win rate: B 50.71%
-* Score lead: B 0.06
-* Win rate drop: W ⇣2.74%
-* Score drop: W ⇣0.33
+* Win rate: B 51.94%
+* Score lead: B 0.23
+* Win rate drop: W ⇣4.68%
+* Score drop: W ⇣0.56
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #19 ⇣5.26%, #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[50.71]
+* Black bad moves: #19 ⇣10.01%, #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
+]SBKV[51.94]
 ;B[dk]C[Move 19
 
-* Win rate: W 54.55%
-* Score lead: W 0.54
-* Win rate drop: B ⇣5.26%
-* Score drop: B ⇣0.60
+* Win rate: W 58.07%
+* Score lead: W 0.83
+* Win rate drop: B ⇣10.01%
+* Score drop: B ⇣1.06
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]BM[1]SBKV[45.45]
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+* White bad moves: #20 ⇣9.02%
+]BM[1]SBKV[41.93]
 ;W[ck]C[Move 20
 
-* Win rate: W 50.06%
-* Score lead: W 0.07
-* Win rate drop: W ⇣4.50%
-* Score drop: W ⇣0.47
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[49.94]
-;B[dj]C[Move 21
-
-* Win rate: W 54.43%
-* Score lead: W 0.44
-* Win rate drop: B ⇣4.37%
-* Score drop: B ⇣0.38
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[45.57]
-;W[dl]C[Move 22
-
-* Win rate: W 51.18%
-* Score lead: W 0.03
-* Win rate drop: W ⇣3.24%
-* Score drop: W ⇣0.42
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #23 ⇣5.42%, #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[48.82]
-;B[el]C[Move 23
-
-* Win rate: W 56.61%
-* Score lead: W 0.69
-* Win rate drop: B ⇣5.42%
-* Score drop: B ⇣0.67
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]BM[1]SBKV[43.39]
-;W[cj]C[Move 24
-
-* Win rate: W 57.83%
-* Score lead: W 0.79
-* Win rate drop: W ⇣-1.22%
-* Score drop: W ⇣-0.09
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[42.17]
-;B[di]C[Move 25
-
-* Win rate: W 58.45%
-* Score lead: W 0.87
-* Win rate drop: B ⇣0.62%
-* Score drop: B ⇣0.08
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[41.55]
-;W[ch]C[Move 26
-
-* Win rate: W 56.50%
-* Score lead: W 0.77
-* Win rate drop: W ⇣1.95%
-* Score drop: W ⇣0.10
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[43.50]
-;B[eg]C[Move 27
-
-* Win rate: W 60.77%
-* Score lead: W 1.47
-* Win rate drop: B ⇣4.28%
-* Score drop: B ⇣0.70
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[39.23]
-;W[cf]C[Move 28
-
-* Win rate: W 59.09%
-* Score lead: W 0.99
-* Win rate drop: W ⇣1.68%
-* Score drop: W ⇣0.48
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[40.91]
-;B[df]C[Move 29
-
-* Win rate: W 62.79%
-* Score lead: W 1.69
-* Win rate drop: B ⇣3.70%
-* Score drop: B ⇣0.69
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[37.21]
-;W[ce]C[Move 30
-
-* Win rate: W 61.79%
-* Score lead: W 1.41
-* Win rate drop: W ⇣1.00%
-* Score drop: W ⇣0.28
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #31 ⇣7.75%, #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[38.21]
-;B[cd]C[Move 31
-
-* Win rate: W 69.54%
-* Score lead: W 2.49
-* Win rate drop: B ⇣7.75%
-* Score drop: B ⇣1.08
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]BM[1]SBKV[30.46]
-;W[de]C[Move 32
-
-* Win rate: W 69.67%
-* Score lead: W 2.48
-* Win rate drop: W ⇣-0.14%
-* Score drop: W ⇣0.01
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[30.33]
-;B[ee]C[Move 33
-
-* Win rate: W 73.14%
-* Score lead: W 3.18
-* Win rate drop: B ⇣3.46%
-* Score drop: B ⇣0.70
-* Visits: 1
-
-Bad moves left
-
-* Black bad moves: #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #34 ⇣7.79%, #38 ⇣7.63%, #40 ⇣5.51%
-]SBKV[26.86]
-;W[ed]C[Move 34
-
-* Win rate: W 65.35%
-* Score lead: W 2.22
-* Win rate drop: W ⇣7.79%
+* Win rate: B 50.94%
+* Score lead: B 0.13
+* Win rate drop: W ⇣9.02%
 * Score drop: W ⇣0.96
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #35 ⇣14.18%, #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #38 ⇣7.63%, #40 ⇣5.51%
-]BM[1]SBKV[34.65]
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]BM[1]SBKV[50.94]
+;B[dj]C[Move 21
+
+* Win rate: W 52.21%
+* Score lead: W 0.31
+* Win rate drop: B ⇣3.15%
+* Score drop: B ⇣0.44
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[47.79]
+;W[dl]C[Move 22
+
+* Win rate: B 50.89%
+* Score lead: B 0.16
+* Win rate drop: W ⇣3.10%
+* Score drop: W ⇣0.47
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[50.89]
+;B[el]C[Move 23
+
+* Win rate: W 52.91%
+* Score lead: W 0.42
+* Win rate drop: B ⇣3.81%
+* Score drop: B ⇣0.58
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[47.09]
+;W[cj]C[Move 24
+
+* Win rate: W 53.98%
+* Score lead: W 0.43
+* Win rate drop: W ⇣-1.07%
+* Score drop: W ⇣-0.02
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #25 ⇣6.18%, #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]TE[1]SBKV[46.02]
+;B[di]C[Move 25
+
+* Win rate: W 60.16%
+* Score lead: W 1.10
+* Win rate drop: B ⇣6.18%
+* Score drop: B ⇣0.67
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]BM[1]SBKV[39.84]
+;W[ch]C[Move 26
+
+* Win rate: W 57.31%
+* Score lead: W 0.83
+* Win rate drop: W ⇣2.85%
+* Score drop: W ⇣0.28
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[42.69]
+;B[eg]C[Move 27
+
+* Win rate: W 59.44%
+* Score lead: W 1.41
+* Win rate drop: B ⇣2.13%
+* Score drop: B ⇣0.59
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[40.56]
+;W[cf]C[Move 28
+
+* Win rate: W 56.87%
+* Score lead: W 0.73
+* Win rate drop: W ⇣2.57%
+* Score drop: W ⇣0.68
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #29 ⇣7.97%, #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[43.13]
+;B[df]C[Move 29
+
+* Win rate: W 64.85%
+* Score lead: W 2.04
+* Win rate drop: B ⇣7.97%
+* Score drop: B ⇣1.32
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]BM[1]SBKV[35.15]
+;W[ce]C[Move 30
+
+* Win rate: W 63.27%
+* Score lead: W 1.54
+* Win rate drop: W ⇣1.57%
+* Score drop: W ⇣0.50
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]TE[1]SBKV[36.73]
+;B[cd]C[Move 31
+
+* Win rate: W 67.39%
+* Score lead: W 2.23
+* Win rate drop: B ⇣4.12%
+* Score drop: B ⇣0.69
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[32.61]
+;W[de]C[Move 32
+
+* Win rate: W 63.98%
+* Score lead: W 1.70
+* Win rate drop: W ⇣3.41%
+* Score drop: W ⇣0.53
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #33 ⇣5.54%, #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[36.02]
+;B[ee]C[Move 33
+
+* Win rate: W 69.52%
+* Score lead: W 2.76
+* Win rate drop: B ⇣5.54%
+* Score drop: B ⇣1.06
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]BM[1]SBKV[30.48]
+;W[ed]C[Move 34
+
+* Win rate: W 65.27%
+* Score lead: W 2.16
+* Win rate drop: W ⇣4.25%
+* Score drop: W ⇣0.60
+* Visits: 1
+
+Bad moves left
+
+* Black bad moves: #35 ⇣9.60%, #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[34.73]
 ;B[fe]C[Move 35
 
-* Win rate: W 79.53%
-* Score lead: W 4.68
-* Win rate drop: B ⇣14.18%
-* Score drop: B ⇣2.46
+* Win rate: W 74.87%
+* Score lead: W 3.63
+* Win rate drop: B ⇣9.60%
+* Score drop: B ⇣1.47
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #38 ⇣7.63%, #40 ⇣5.51%
-]BM[1]SBKV[20.47]
+* Black bad moves: #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]BM[1]SBKV[25.13]
 ;W[ec]C[Move 36
 
-* Win rate: W 77.91%
-* Score lead: W 4.67
-* Win rate drop: W ⇣1.62%
-* Score drop: W ⇣0.01
+* Win rate: W 75.59%
+* Score lead: W 4.31
+* Win rate drop: W ⇣-0.72%
+* Score drop: W ⇣-0.67
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #37 ⇣10.84%, #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #38 ⇣7.63%, #40 ⇣5.51%
-]TE[1]SBKV[22.09]
+* Black bad moves: #37 ⇣13.16%, #43 ⇣7.91%, #45 ⇣7.99%
+]TE[1]SBKV[24.41]
 ;B[db]C[Move 37
 
 * Win rate: W 88.74%
 * Score lead: W 6.93
-* Win rate drop: B ⇣10.84%
-* Score drop: B ⇣2.26
+* Win rate drop: B ⇣13.16%
+* Score drop: B ⇣2.63
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #38 ⇣7.63%, #40 ⇣5.51%
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
 ]BM[1]SBKV[11.26]
 ;W[eb]C[Move 38
 
-* Win rate: W 81.11%
-* Score lead: W 5.05
-* Win rate drop: W ⇣7.63%
-* Score drop: W ⇣1.89
+* Win rate: W 84.72%
+* Score lead: W 5.85
+* Win rate drop: W ⇣4.03%
+* Score drop: W ⇣1.08
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #40 ⇣5.51%
-]BM[1]SBKV[18.89]
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[15.28]
 ;B[bd]C[Move 39
 
-* Win rate: W 84.38%
-* Score lead: W 5.95
-* Win rate drop: B ⇣3.27%
-* Score drop: B ⇣0.90
+* Win rate: W 87.83%
+* Score lead: W 6.96
+* Win rate drop: B ⇣3.11%
+* Score drop: B ⇣1.11
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-* White bad moves: #40 ⇣5.51%
-]SBKV[15.62]
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[12.17]
 ;W[dg]C[Move 40
 
-* Win rate: W 78.86%
-* Score lead: W 4.76
-* Win rate drop: W ⇣5.51%
-* Score drop: W ⇣1.18
+* Win rate: W 85.09%
+* Score lead: W 6.64
+* Win rate drop: W ⇣2.74%
+* Score drop: W ⇣0.32
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #41 ⇣5.26%, #43 ⇣5.61%, #45 ⇣7.18%
-]BM[1]SBKV[21.14]
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
+]SBKV[14.91]
 ;B[ci]C[Move 41
 
-* Win rate: W 84.12%
-* Score lead: W 6.80
-* Win rate drop: B ⇣5.26%
-* Score drop: B ⇣2.04
+* Win rate: W 83.87%
+* Score lead: W 6.82
+* Win rate drop: B ⇣-1.22%
+* Score drop: B ⇣0.18
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #43 ⇣5.61%, #45 ⇣7.18%
-]BM[1]SBKV[15.88]
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
+]TE[1]SBKV[16.13]
 ;W[bi]C[Move 42
 
-* Win rate: W 86.96%
-* Score lead: W 7.36
-* Win rate drop: W ⇣-2.84%
-* Score drop: W ⇣-0.56
+* Win rate: W 84.66%
+* Score lead: W 6.71
+* Win rate drop: W ⇣-0.79%
+* Score drop: W ⇣0.11
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #43 ⇣5.61%, #45 ⇣7.18%
-]TE[1]SBKV[13.04]
+* Black bad moves: #43 ⇣7.91%, #45 ⇣7.99%
+]TE[1]SBKV[15.34]
 ;B[bg]C[Move 43
 
 * Win rate: W 92.57%
 * Score lead: W 10.33
-* Win rate drop: B ⇣5.61%
-* Score drop: B ⇣2.98
+* Win rate drop: B ⇣7.91%
+* Score drop: B ⇣3.62
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #45 ⇣7.18%
+* Black bad moves: #45 ⇣7.99%
 ]BM[1]SBKV[7.43]
 ;W[bh]C[Move 44
 
-* Win rate: W 90.42%
-* Score lead: W 8.75
-* Win rate drop: W ⇣2.15%
+* Win rate: W 89.51%
+* Score lead: W 8.76
+* Win rate drop: W ⇣3.06%
 * Score drop: W ⇣1.58
 * Visits: 1
 
 Bad moves left
 
-* Black bad moves: #45 ⇣7.18%
-]SBKV[9.58]
+* Black bad moves: #45 ⇣7.99%
+]SBKV[10.49]
 ;B[dh]C[Move 45
 
-* Win rate: W 97.60%
-* Score lead: W 16.14
-* Win rate drop: B ⇣7.18%
-* Score drop: B ⇣7.39
+* Win rate: W 97.50%
+* Score lead: W 16.82
+* Win rate drop: B ⇣7.99%
+* Score drop: B ⇣8.06
 * Visits: 1
-]BM[1]SBKV[2.40]
+]BM[1]SBKV[2.50]
 ;W[cg]C[Move 46
 
-* Win rate: W 97.83%
-* Score lead: W 13.73
-* Win rate drop: W ⇣-0.23%
-* Score drop: W ⇣2.40
+* Win rate: W 97.25%
+* Score lead: W 12.87
+* Win rate drop: W ⇣0.25%
+* Score drop: W ⇣3.94
 * Visits: 1
-]TE[1]SBKV[2.17]
+]TE[1]SBKV[2.75]
 ;B[ef]C[Move 47
 
 * Win rate: W 99.08%
 * Score lead: W 20.25
-* Win rate drop: B ⇣1.26%
-* Score drop: B ⇣6.51
+* Win rate drop: B ⇣1.83%
+* Score drop: B ⇣7.37
 * Visits: 1
 ]TE[1]SBKV[0.92]
 ;W[hc]C[Move 48
 
-* Win rate: W 99.36%
-* Score lead: W 18.23
-* Win rate drop: W ⇣-0.28%
-* Score drop: W ⇣2.01
-* Visits: 1
-]TE[1]SBKV[0.64]
-;B[he]C[Move 49
-
-* Win rate: W 99.31%
-* Score lead: W 21.19
-* Win rate drop: B ⇣-0.06%
-* Score drop: B ⇣2.95
-* Visits: 1
-]TE[1]SBKV[0.69]
-;W[em]C[Move 50
-
-* Win rate: W 99.46%
-* Score lead: W 20.59
-* Win rate drop: W ⇣-0.16%
-* Score drop: W ⇣0.60
-* Visits: 1
-]TE[1]SBKV[0.54]
-;B[fm]C[Move 51
-
-* Win rate: W 99.38%
-* Score lead: W 19.62
-* Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣-0.96
-* Visits: 1
-]TE[1]SBKV[0.62]
-;W[dm]C[Move 52
-
 * Win rate: W 99.39%
-* Score lead: W 18.32
-* Win rate drop: W ⇣-0.01%
-* Score drop: W ⇣1.31
+* Score lead: W 18.14
+* Win rate drop: W ⇣-0.31%
+* Score drop: W ⇣2.11
 * Visits: 1
 ]TE[1]SBKV[0.61]
+;B[he]C[Move 49
+
+* Win rate: W 99.41%
+* Score lead: W 20.91
+* Win rate drop: B ⇣0.02%
+* Score drop: B ⇣2.77
+* Visits: 1
+]TE[1]SBKV[0.59]
+;W[em]C[Move 50
+
+* Win rate: W 99.34%
+* Score lead: W 19.09
+* Win rate drop: W ⇣0.07%
+* Score drop: W ⇣1.83
+* Visits: 1
+]TE[1]SBKV[0.66]
+;B[fm]C[Move 51
+
+* Win rate: W 99.35%
+* Score lead: W 19.24
+* Win rate drop: B ⇣0.01%
+* Score drop: B ⇣0.16
+* Visits: 1
+]TE[1]SBKV[0.65]
+;W[dm]C[Move 52
+
+* Win rate: W 99.37%
+* Score lead: W 17.43
+* Win rate drop: W ⇣-0.02%
+* Score drop: W ⇣1.82
+* Visits: 1
+]TE[1]SBKV[0.63]
 ;B[fl]C[Move 53
 
 * Win rate: W 99.28%
-* Score lead: W 19.61
-* Win rate drop: B ⇣-0.11%
-* Score drop: B ⇣1.29
+* Score lead: W 18.86
+* Win rate drop: B ⇣-0.10%
+* Score drop: B ⇣1.43
 * Visits: 1
 ]TE[1]SBKV[0.72]
 ;W[dn]C[Move 54
 
-* Win rate: W 99.26%
-* Score lead: W 16.72
-* Win rate drop: W ⇣0.01%
-* Score drop: W ⇣2.89
+* Win rate: W 98.97%
+* Score lead: W 15.40
+* Win rate drop: W ⇣0.31%
+* Score drop: W ⇣3.45
 * Visits: 1
-]TE[1]SBKV[0.74]
+]TE[1]SBKV[1.03]
 ;B[do]C[Move 55
 
 * Win rate: W 99.32%
 * Score lead: W 22.79
-* Win rate drop: B ⇣0.06%
-* Score drop: B ⇣6.07
+* Win rate drop: B ⇣0.35%
+* Score drop: B ⇣7.38
 * Visits: 1
 ]TE[1]SBKV[0.68]
 ;W[eo]C[Move 56
 
-* Win rate: W 99.65%
-* Score lead: W 21.99
-* Win rate drop: W ⇣-0.33%
-* Score drop: W ⇣0.79
-* Visits: 1
-]TE[1]SBKV[0.35]
-;B[co]C[Move 57
-
 * Win rate: W 99.60%
-* Score lead: W 26.69
-* Win rate drop: B ⇣-0.05%
-* Score drop: B ⇣4.69
+* Score lead: W 22.32
+* Win rate drop: W ⇣-0.28%
+* Score drop: W ⇣0.46
 * Visits: 1
 ]TE[1]SBKV[0.40]
+;B[co]C[Move 57
+
+* Win rate: W 99.53%
+* Score lead: W 25.37
+* Win rate drop: B ⇣-0.07%
+* Score drop: B ⇣3.05
+* Visits: 1
+]TE[1]SBKV[0.47]
 ;W[fn]C[Move 58
 
-* Win rate: W 99.55%
-* Score lead: W 20.45
-* Win rate drop: W ⇣0.05%
-* Score drop: W ⇣6.24
+* Win rate: W 99.63%
+* Score lead: W 22.14
+* Win rate drop: W ⇣-0.10%
+* Score drop: W ⇣3.23
 * Visits: 1
-]TE[1]SBKV[0.45]
+]TE[1]SBKV[0.37]
 ;B[gn]C[Move 59
 
-* Win rate: W 99.59%
-* Score lead: W 29.12
+* Win rate: W 99.68%
+* Score lead: W 29.34
 * Win rate drop: B ⇣0.05%
-* Score drop: B ⇣8.67
+* Score drop: B ⇣7.20
 * Visits: 1
-]TE[1]SBKV[0.41]
+]TE[1]SBKV[0.32]
 ;W[cp]C[Move 60
 
-* Win rate: W 99.82%
-* Score lead: W 26.63
-* Win rate drop: W ⇣-0.22%
-* Score drop: W ⇣2.49
+* Win rate: W 99.80%
+* Score lead: W 27.14
+* Win rate drop: W ⇣-0.11%
+* Score drop: W ⇣2.20
 * Visits: 1
-]TE[1]SBKV[0.18]
+]TE[1]SBKV[0.20]
 ;B[go]C[Move 61
 
-* Win rate: W 99.76%
-* Score lead: W 29.90
-* Win rate drop: B ⇣-0.06%
-* Score drop: B ⇣3.27
+* Win rate: W 99.77%
+* Score lead: W 31.24
+* Win rate drop: B ⇣-0.03%
+* Score drop: B ⇣4.10
 * Visits: 1
-]TE[1]SBKV[0.24]
+]TE[1]SBKV[0.23]
 ;W[gp]C[Move 62
 
-* Win rate: W 99.84%
-* Score lead: W 28.74
-* Win rate drop: W ⇣-0.08%
-* Score drop: W ⇣1.16
+* Win rate: W 99.82%
+* Score lead: W 29.50
+* Win rate drop: W ⇣-0.06%
+* Score drop: W ⇣1.74
 * Visits: 1
-]TE[1]SBKV[0.16]
+]TE[1]SBKV[0.18]
 ;B[hp]C[Move 63
 
 * Win rate: W 99.75%
 * Score lead: W 28.50
-* Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣-0.24
+* Win rate drop: B ⇣-0.07%
+* Score drop: B ⇣-1.00
 * Visits: 1
 ]TE[1]SBKV[0.25]
 ;W[hq]C[Move 64
 
-* Win rate: W 99.87%
-* Score lead: W 29.49
-* Win rate drop: W ⇣-0.12%
-* Score drop: W ⇣-0.99
+* Win rate: W 99.85%
+* Score lead: W 29.83
+* Win rate drop: W ⇣-0.10%
+* Score drop: W ⇣-1.33
 * Visits: 1
-]TE[1]SBKV[0.13]
+]TE[1]SBKV[0.15]
 ;B[iq]C[Move 65
 
-* Win rate: W 99.75%
-* Score lead: W 31.31
-* Win rate drop: B ⇣-0.11%
-* Score drop: B ⇣1.82
+* Win rate: W 99.78%
+* Score lead: W 30.64
+* Win rate drop: B ⇣-0.07%
+* Score drop: B ⇣0.81
 * Visits: 1
-]TE[1]SBKV[0.25]
+]TE[1]SBKV[0.22]
 ;W[ip]C[Move 66
 
-* Win rate: W 99.89%
-* Score lead: W 33.23
-* Win rate drop: W ⇣-0.14%
-* Score drop: W ⇣-1.92
-* Visits: 1
-]TE[1]SBKV[0.11]
-;B[ho]C[Move 67
-
-* Win rate: W 99.81%
-* Score lead: W 31.24
-* Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣-1.99
-* Visits: 1
-]TE[1]SBKV[0.19]
-;W[jq]C[Move 68
-
-* Win rate: W 99.90%
-* Score lead: W 33.61
-* Win rate drop: W ⇣-0.09%
-* Score drop: W ⇣-2.38
-* Visits: 1
-]TE[1]SBKV[0.10]
-;B[ir]C[Move 69
-
-* Win rate: W 99.83%
-* Score lead: W 32.94
-* Win rate drop: B ⇣-0.07%
-* Score drop: B ⇣-0.67
-* Visits: 1
-]TE[1]SBKV[0.17]
-;W[hr]C[Move 70
-
 * Win rate: W 99.87%
-* Score lead: W 30.70
-* Win rate drop: W ⇣-0.03%
-* Score drop: W ⇣2.24
+* Score lead: W 33.64
+* Win rate drop: W ⇣-0.09%
+* Score drop: W ⇣-3.00
 * Visits: 1
 ]TE[1]SBKV[0.13]
+;B[ho]C[Move 67
+
+* Win rate: W 99.75%
+* Score lead: W 31.70
+* Win rate drop: B ⇣-0.12%
+* Score drop: B ⇣-1.93
+* Visits: 1
+]TE[1]SBKV[0.25]
+;W[jq]C[Move 68
+
+* Win rate: W 99.80%
+* Score lead: W 30.46
+* Win rate drop: W ⇣-0.05%
+* Score drop: W ⇣1.24
+* Visits: 1
+]TE[1]SBKV[0.20]
+;B[ir]C[Move 69
+
+* Win rate: W 99.84%
+* Score lead: W 31.82
+* Win rate drop: B ⇣0.04%
+* Score drop: B ⇣1.36
+* Visits: 1
+]TE[1]SBKV[0.16]
+;W[hr]C[Move 70
+
+* Win rate: W 99.89%
+* Score lead: W 31.32
+* Win rate drop: W ⇣-0.05%
+* Score drop: W ⇣0.49
+* Visits: 1
+]TE[1]SBKV[0.11]
 ;B[jr]C[Move 71
 
 * Win rate: W 99.80%
 * Score lead: W 33.43
-* Win rate drop: B ⇣-0.06%
-* Score drop: B ⇣2.73
+* Win rate drop: B ⇣-0.08%
+* Score drop: B ⇣2.10
 * Visits: 1
 ]TE[1]SBKV[0.20]
 ;W[kq]C[Move 72
 
-* Win rate: W 99.90%
-* Score lead: W 32.19
-* Win rate drop: W ⇣-0.10%
-* Score drop: W ⇣1.23
+* Win rate: W 99.87%
+* Score lead: W 31.03
+* Win rate drop: W ⇣-0.07%
+* Score drop: W ⇣2.40
 * Visits: 1
-]TE[1]SBKV[0.10]
+]TE[1]SBKV[0.13]
 ;B[kr]C[Move 73
 
 * Win rate: W 99.79%
-* Score lead: W 35.32
-* Win rate drop: B ⇣-0.11%
-* Score drop: B ⇣3.13
+* Score lead: W 35.84
+* Win rate drop: B ⇣-0.08%
+* Score drop: B ⇣4.81
 * Visits: 1
 ]TE[1]SBKV[0.21]
 ;W[lq]C[Move 74
 
-* Win rate: W 99.90%
-* Score lead: W 34.89
-* Win rate drop: W ⇣-0.11%
-* Score drop: W ⇣0.43
+* Win rate: W 99.92%
+* Score lead: W 36.82
+* Win rate drop: W ⇣-0.13%
+* Score drop: W ⇣-0.98
 * Visits: 1
-]TE[1]SBKV[0.10]
+]TE[1]SBKV[0.08]
 ;B[lr]C[Move 75
 
-* Win rate: W 99.83%
-* Score lead: W 40.48
-* Win rate drop: B ⇣-0.07%
-* Score drop: B ⇣5.59
+* Win rate: W 99.86%
+* Score lead: W 41.21
+* Win rate drop: B ⇣-0.06%
+* Score drop: B ⇣4.39
 * Visits: 1
-]TE[1]SBKV[0.17]
+]TE[1]SBKV[0.14]
 ;W[mr]C[Move 76
 
 * Win rate: W 99.92%
-* Score lead: W 40.91
-* Win rate drop: W ⇣-0.09%
-* Score drop: W ⇣-0.42
+* Score lead: W 39.29
+* Win rate drop: W ⇣-0.06%
+* Score drop: W ⇣1.92
 * Visits: 1
 ]TE[1]SBKV[0.08]
 ;B[jp]C[Move 77
 
 * Win rate: W 99.84%
 * Score lead: W 35.39
-* Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣-5.52
+* Win rate drop: B ⇣-0.07%
+* Score drop: B ⇣-3.90
 * Visits: 1
 ]TE[1]SBKV[0.16]
 ;W[io]C[Move 78
 
-* Win rate: W 99.92%
-* Score lead: W 40.55
-* Win rate drop: W ⇣-0.08%
-* Score drop: W ⇣-5.17
+* Win rate: W 99.89%
+* Score lead: W 41.24
+* Win rate drop: W ⇣-0.05%
+* Score drop: W ⇣-5.86
 * Visits: 1
-]TE[1]SBKV[0.08]
+]TE[1]SBKV[0.11]
 ;B[jo]C[Move 79
 
-* Win rate: W 99.74%
-* Score lead: W 49.54
-* Win rate drop: B ⇣-0.18%
-* Score drop: B ⇣8.99
+* Win rate: W 99.78%
+* Score lead: W 45.48
+* Win rate drop: B ⇣-0.11%
+* Score drop: B ⇣4.24
 * Visits: 1
-]TE[1]SBKV[0.26]
+]TE[1]SBKV[0.22]
 ;W[in]C[Move 80
 
-* Win rate: W 99.91%
-* Score lead: W 48.79
-* Win rate drop: W ⇣-0.17%
-* Score drop: W ⇣0.75
+* Win rate: W 99.90%
+* Score lead: W 48.14
+* Win rate drop: W ⇣-0.11%
+* Score drop: W ⇣-2.66
 * Visits: 1
-]TE[1]SBKV[0.09]
+]TE[1]SBKV[0.10]
 ;B[jn]C[Move 81
 
 * Win rate: W 99.83%
 * Score lead: W 52.16
-* Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣3.37
+* Win rate drop: B ⇣-0.06%
+* Score drop: B ⇣4.02
 * Visits: 1
 ]TE[1]SBKV[0.17]
 ;W[im]C[Move 82
 
-* Win rate: W 99.90%
-* Score lead: W 52.87
-* Win rate drop: W ⇣-0.07%
+* Win rate: W 99.94%
+* Score lead: W 52.86
+* Win rate drop: W ⇣-0.11%
 * Score drop: W ⇣-0.70
 * Visits: 1
-]TE[1]SBKV[0.10]
+]TE[1]SBKV[0.06]
 ;B[jm]C[Move 83
 
 * Win rate: W 99.85%
-* Score lead: W 53.90
-* Win rate drop: B ⇣-0.06%
-* Score drop: B ⇣1.03
+* Score lead: W 55.94
+* Win rate drop: B ⇣-0.09%
+* Score drop: B ⇣3.08
 * Visits: 1
 ]TE[1]SBKV[0.15]
 ;W[il]C[Move 84
@@ -901,200 +881,200 @@ Bad moves left
 * Win rate: W 99.97%
 * Score lead: W 58.67
 * Win rate drop: W ⇣-0.12%
-* Score drop: W ⇣-4.77
+* Score drop: W ⇣-2.73
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[jl]C[Move 85
 
-* Win rate: W 99.92%
-* Score lead: W 58.84
-* Win rate drop: B ⇣-0.05%
-* Score drop: B ⇣0.17
+* Win rate: W 99.90%
+* Score lead: W 58.38
+* Win rate drop: B ⇣-0.07%
+* Score drop: B ⇣-0.29
 * Visits: 1
-]TE[1]SBKV[0.08]
+]TE[1]SBKV[0.10]
 ;W[ik]C[Move 86
 
 * Win rate: W 99.97%
-* Score lead: W 57.89
-* Win rate drop: W ⇣-0.05%
-* Score drop: W ⇣0.95
+* Score lead: W 58.58
+* Win rate drop: W ⇣-0.07%
+* Score drop: W ⇣-0.20
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[jk]C[Move 87
 
-* Win rate: W 99.95%
-* Score lead: W 59.58
-* Win rate drop: B ⇣-0.02%
-* Score drop: B ⇣1.69
+* Win rate: W 99.94%
+* Score lead: W 61.30
+* Win rate drop: B ⇣-0.03%
+* Score drop: B ⇣2.72
 * Visits: 1
-]TE[1]SBKV[0.05]
+]TE[1]SBKV[0.06]
 ;W[ij]C[Move 88
 
-* Win rate: W 99.97%
-* Score lead: W 58.86
-* Win rate drop: W ⇣-0.02%
-* Score drop: W ⇣0.72
+* Win rate: W 99.98%
+* Score lead: W 59.25
+* Win rate drop: W ⇣-0.03%
+* Score drop: W ⇣2.05
 * Visits: 1
-]TE[1]SBKV[0.03]
+]TE[1]SBKV[0.02]
 ;B[jj]C[Move 89
 
-* Win rate: W 99.97%
-* Score lead: W 61.15
-* Win rate drop: B ⇣-0.00%
-* Score drop: B ⇣2.30
+* Win rate: W 99.96%
+* Score lead: W 61.13
+* Win rate drop: B ⇣-0.01%
+* Score drop: B ⇣1.88
 * Visits: 1
-]TE[1]SBKV[0.03]
+]TE[1]SBKV[0.04]
 ;W[ii]C[Move 90
 
 * Win rate: W 99.97%
-* Score lead: W 58.15
+* Score lead: W 59.46
 * Win rate drop: W ⇣-0.01%
-* Score drop: W ⇣3.01
+* Score drop: W ⇣1.67
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[ji]C[Move 91
 
-* Win rate: W 99.96%
-* Score lead: W 61.01
+* Win rate: W 99.97%
+* Score lead: W 60.94
 * Win rate drop: B ⇣-0.01%
-* Score drop: B ⇣2.86
+* Score drop: B ⇣1.48
 * Visits: 1
-]TE[1]SBKV[0.04]
+]TE[1]SBKV[0.03]
 ;W[ih]C[Move 92
 
 * Win rate: W 99.98%
 * Score lead: W 60.04
-* Win rate drop: W ⇣-0.02%
-* Score drop: W ⇣0.97
+* Win rate drop: W ⇣-0.01%
+* Score drop: W ⇣0.90
 * Visits: 1
 ]TE[1]SBKV[0.02]
 ;B[fo]C[Move 93
 
-* Win rate: W 99.95%
-* Score lead: W 62.59
-* Win rate drop: B ⇣-0.02%
-* Score drop: B ⇣2.55
+* Win rate: W 99.94%
+* Score lead: W 62.65
+* Win rate drop: B ⇣-0.03%
+* Score drop: B ⇣2.61
 * Visits: 1
-]TE[1]SBKV[0.05]
+]TE[1]SBKV[0.06]
 ;W[en]C[Move 94
 
-* Win rate: W 99.70%
-* Score lead: W 53.71
-* Win rate drop: W ⇣0.26%
-* Score drop: W ⇣8.87
+* Win rate: W 99.65%
+* Score lead: W 51.87
+* Win rate drop: W ⇣0.30%
+* Score drop: W ⇣10.78
 * Visits: 1
-]TE[1]SBKV[0.30]
+]TE[1]SBKV[0.35]
 ;B[gm]C[Move 95
 
 * Win rate: W 99.88%
 * Score lead: W 55.54
-* Win rate drop: B ⇣0.19%
-* Score drop: B ⇣1.83
+* Win rate drop: B ⇣0.23%
+* Score drop: B ⇣3.67
 * Visits: 1
 ]TE[1]SBKV[0.12]
 ;W[gq]C[Move 96
 
 * Win rate: W 99.96%
-* Score lead: W 53.36
+* Score lead: W 54.23
 * Win rate drop: W ⇣-0.08%
-* Score drop: W ⇣2.18
+* Score drop: W ⇣1.31
 * Visits: 1
 ]TE[1]SBKV[0.04]
 ;B[mp]C[Move 97
 
-* Win rate: W 99.88%
-* Score lead: W 55.18
+* Win rate: W 99.89%
+* Score lead: W 55.48
 * Win rate drop: B ⇣-0.08%
-* Score drop: B ⇣1.82
+* Score drop: B ⇣1.26
 * Visits: 1
-]TE[1]SBKV[0.12]
+]TE[1]SBKV[0.11]
 ;W[mq]C[Move 98
 
 * Win rate: W 99.97%
-* Score lead: W 55.93
+* Score lead: W 55.64
 * Win rate drop: W ⇣-0.08%
-* Score drop: W ⇣-0.75
+* Score drop: W ⇣-0.16
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[np]C[Move 99
 
-* Win rate: W 99.96%
-* Score lead: W 59.98
+* Win rate: W 99.95%
+* Score lead: W 60.01
 * Win rate drop: B ⇣-0.01%
-* Score drop: B ⇣4.05
+* Score drop: B ⇣4.37
 * Visits: 1
-]TE[1]SBKV[0.04]
+]TE[1]SBKV[0.05]
 ;W[fj]C[Move 100
 
 * Win rate: W 99.97%
-* Score lead: W 62.01
+* Score lead: W 59.40
 * Win rate drop: W ⇣-0.01%
-* Score drop: W ⇣-2.02
+* Score drop: W ⇣0.61
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[oq]C[Move 101
 
-* Win rate: W 99.91%
-* Score lead: W 64.98
-* Win rate drop: B ⇣-0.06%
-* Score drop: B ⇣2.97
+* Win rate: W 99.94%
+* Score lead: W 65.29
+* Win rate drop: B ⇣-0.03%
+* Score drop: B ⇣5.88
 * Visits: 1
-]TE[1]SBKV[0.09]
+]TE[1]SBKV[0.06]
 ;W[or]C[Move 102
 
 * Win rate: W 99.97%
-* Score lead: W 63.05
-* Win rate drop: W ⇣-0.06%
-* Score drop: W ⇣1.92
+* Score lead: W 61.68
+* Win rate drop: W ⇣-0.03%
+* Score drop: W ⇣3.60
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[op]C[Move 103
 
-* Win rate: W 99.95%
-* Score lead: W 65.16
-* Win rate drop: B ⇣-0.02%
-* Score drop: B ⇣2.11
+* Win rate: W 99.96%
+* Score lead: W 65.12
+* Win rate drop: B ⇣-0.01%
+* Score drop: B ⇣3.44
 * Visits: 1
-]TE[1]SBKV[0.05]
+]TE[1]SBKV[0.04]
 ;W[pq]C[Move 104
 
 * Win rate: W 99.97%
-* Score lead: W 64.73
-* Win rate drop: W ⇣-0.02%
-* Score drop: W ⇣0.43
+* Score lead: W 61.77
+* Win rate drop: W ⇣-0.01%
+* Score drop: W ⇣3.34
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;B[po]C[Move 105
 
 * Win rate: W 99.97%
-* Score lead: W 69.39
+* Score lead: W 66.75
 * Win rate drop: B ⇣0.00%
-* Score drop: B ⇣4.66
+* Score drop: B ⇣4.98
 * Visits: 1
 ]TE[1]SBKV[0.03]
 ;W[ek]C[Move 106
 
-* Win rate: W 99.96%
-* Score lead: W 61.37
-* Win rate drop: W ⇣0.01%
-* Score drop: W ⇣8.02
-* Visits: 1
-]TE[1]SBKV[0.04]
-;B[fk]C[Move 107
-
-* Win rate: W 99.96%
-* Score lead: W 71.01
-* Win rate drop: B ⇣-0.01%
-* Score drop: B ⇣9.63
-* Visits: 1
-]TE[1]SBKV[0.04]
-;W[ej]C[Move 108
-
 * Win rate: W 99.97%
-* Score lead: W 67.75
-* Win rate drop: W ⇣-0.01%
-* Score drop: W ⇣3.25
+* Score lead: W 60.65
+* Win rate drop: W ⇣0.00%
+* Score drop: W ⇣6.10
 * Visits: 1
 ]TE[1]SBKV[0.03]
+;B[fk]C[Move 107
+
+* Win rate: W 99.95%
+* Score lead: W 66.75
+* Win rate drop: B ⇣-0.02%
+* Score drop: B ⇣6.10
+* Visits: 1
+]TE[1]SBKV[0.05]
+;W[ej]C[Move 108
+
+* Win rate: W 99.96%
+* Score lead: W 68.65
+* Win rate drop: W ⇣-0.01%
+* Score drop: W ⇣-1.90
+* Visits: 1
+]TE[1]SBKV[0.04]
 ;B[]C[Move 109
 ])
