@@ -3,9 +3,9 @@
 # Options for path and arguments of KataGo.
 katago:	
   # e.g., "C:\\Users\\hcho\\KataGo\\katago.exe"
-  path: /app/katago/katago
+  path: code/get_blunders/katago/katago
   # e.g., "analysis -model C:\\Users\\hcho\\KataGo\\katago-best-network.bin.gz -config C:\\Users\\hcho\\KataGo\\analysis_example.cfg"
-  arguments: analysis -model /app/katago/g170e-b20c256x2-s5303129600-d1228401921.bin.gz -config /app/katago/analysis_example.cfg
+  arguments: analysis -model code/get_blunders/katago/g170e-b20c256x2-s5303129600-d1228401921.bin.gz -config code/get_blunders/analysis_example.cfg
 
 # Options for KataGo Parallel Analysis Engine query.
 #
