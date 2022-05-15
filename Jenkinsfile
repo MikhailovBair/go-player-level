@@ -21,7 +21,7 @@ pipeline {
 			parallel {
 				stage('Linter') {
 					steps {
-						sh '`cat activate_cmd` && python3 -m flake8 src/'
+						sh '`cat activate_cmd` && python3 -m flake8 ./code/get_blunders/src/'
 					}
 				}
 			
