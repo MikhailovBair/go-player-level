@@ -29,9 +29,9 @@ mkdir -p $badkomi_games_dir
 
 # Move games to dirs
 ag -L 'HA\[0\]' $full_path_source | xargs mv --target-directory=$handicap_games_dir
-ag -L 'RU\[Japanese\]' $full_path_source | xargs mv --target-directory=$nonjapanese_rules_games_dir
-ag -L 'KM\[(650|0)\]' $full_path_source |  xargs mv --target-directory=$badkomi_games_dir
-ag -l 'KM\[(650|0)\]*HA\[0\]*RU\[Japanese\]' $full_path_source | xargs mv --target-directory=$filtered_games_dir
+# ag -L 'RU\[Japanese\]' $full_path_source | xargs mv --target-directory=$nonjapanese_rules_games_dir
+# ag -L 'KM\[(650|0)\]' $full_path_source |  xargs mv --target-directory=$badkomi_games_dir
+ag -l 'HA\[0\]' $full_path_source | xargs mv --target-directory=$filtered_games_dir
 
 
 # Fix rank and komi

@@ -130,7 +130,7 @@ def katago_all_turns(game: sgf.Sgf_game):
 def get_blunder_and_mistake_thresholds(rank: int):
     if rank is None:
         return None, None
-    df = pd.read_csv('ranks_table.csv', sep=',')
+    df = pd.read_csv('../ranks_table.csv', sep=',')
     blunder_threshold = -float(df.loc[df['rank'] == rank]['Worst_score5'])
     mistake_threshold = -float(df.loc[df['rank'] == rank]['Worst_score10'])
     return blunder_threshold, mistake_threshold
@@ -188,5 +188,5 @@ def parse_game(path):
 
 
 if __name__ == "__main__":
-    print(parse_game("./sgf_for_analysis/current.sgf"))
+    print(parse_game("../sgf_for_analysis/current.sgf"))
 

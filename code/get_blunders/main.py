@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from parse_analyzed import parse_game
+from src.parse_analyzed import parse_game
 
 app = Flask(__name__)
 
