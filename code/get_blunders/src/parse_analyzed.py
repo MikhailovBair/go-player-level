@@ -4,6 +4,7 @@ from sgfmill import sgf
 import re
 
 FILE_FORMAT = '.sgf'
+PATH_TO_THRESHOLDS = 'ranks_table.csv'
 
 
 def convert_to_pair(turn: str):
@@ -16,7 +17,7 @@ def get_best_alternative_turn(variations: list):
     try:
         best_alternative = variations[0][0]
         return best_alternative
-    except TypeError:
+    except (IndexError, TypeError):
         return None
 
 
@@ -112,24 +113,20 @@ def get_turns_list(game: sgf.Sgf_game):
     return turns_black, turns_white
 
 
-def katago_all_turns(game: sgf.Sgf_game):
-    turns_black, turns_white = get_turns_list(game)
-    dict_turns = {"black_turns": convert_turns_to_list(turns_black),
-                  "white_turns": convert_turns_to_list(turns_white)}
-
-    return dict_turns
-
-
-def get_blunder_and_mistake_thresholds(rank: int):
+def get_blunder_and_mistake_thresholds(rank, path=PATH_TO_THRESHOLDS):
     if rank is None:
         return None, None
-    df = pd.read_csv('ranks_table.csv', sep=',')
+    try:
+        df = pd.read_csv(path, sep=',')
+    except FileNotFoundError:
+        raise FileNotFoundError("No rank table file")
+
     blunder_threshold = -float(df.loc[df['rank'] == rank]['Worst_score5'])
     mistake_threshold = -float(df.loc[df['rank'] == rank]['Worst_score10'])
     return blunder_threshold, mistake_threshold
 
 
-def get_blunders_and_mistakes(turns: list, rank: int):
+def get_blunders_and_mistakes(turns: list, rank):
     blunder_threshold, mistake_threshold = get_blunder_and_mistake_thresholds(rank)
     blunders = list()
     mistakes = list()
