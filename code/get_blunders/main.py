@@ -14,7 +14,7 @@ def process():
         try:
             path = 'sgf_for_analysis/current.sgf'
             file.save(path)
-            worst_moves = parse_game(path)
+            worst_moves = parse_game(path, 'ranks_table.csv')
             return jsonify(worst_moves)
         except Exception as e:
             return jsonify({"error": str(e)})
