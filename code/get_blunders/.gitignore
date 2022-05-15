@@ -219,7 +219,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-*.sgf
 /analysis_logs/
 /legacy/
 /sgf_for_analysis/

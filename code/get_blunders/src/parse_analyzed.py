@@ -3,7 +3,6 @@ import pandas as pd
 from sgfmill import sgf
 import re
 
-
 FILE_FORMAT = '.sgf'
 
 
@@ -36,15 +35,9 @@ class Turn:
 
 def convert_turns_to_list(turns: list):
     list_turns = list()
-
     for turn in turns:
         list_turns.append(turn.turn_number)
-        # list_turns.append({"turn_number": turn.turn_number,
-                           # "position": turn.position,
-                           # "score_drop": turn.score_drop,
-                           # "winrate_drop": turn.winrate_drop,
-                           # "variations": turn.variations})
-                           # })
+
     return list_turns
 
 
@@ -130,7 +123,7 @@ def katago_all_turns(game: sgf.Sgf_game):
 def get_blunder_and_mistake_thresholds(rank: int):
     if rank is None:
         return None, None
-    df = pd.read_csv('../ranks_table.csv', sep=',')
+    df = pd.read_csv('ranks_table.csv', sep=',')
     blunder_threshold = -float(df.loc[df['rank'] == rank]['Worst_score5'])
     mistake_threshold = -float(df.loc[df['rank'] == rank]['Worst_score10'])
     return blunder_threshold, mistake_threshold
@@ -188,5 +181,5 @@ def parse_game(path):
 
 
 if __name__ == "__main__":
-    print(parse_game("../sgf_for_analysis/current.sgf"))
+    print(parse_game("tests/test_games/A.sgf"))
 
