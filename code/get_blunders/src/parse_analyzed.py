@@ -21,7 +21,8 @@ def get_best_alternative_turn(variations: list):
 
 
 class Turn:
-    def __init__(self, turn_number, position, score_drop, winrate_drop, variations):
+    def __init__(self, turn_number, position,
+                 score_drop, winrate_drop, variations):
         self.turn_number = turn_number
         self.position = position
         self.score_drop = score_drop
@@ -103,16 +104,22 @@ def get_turns_list(game: sgf.Sgf_game):
         num_variations = get_numerical_variations(variations)
 
         if i % 2 == 0:
-            turns_black.append(Turn(turn_number=i + 1, position=position, score_drop=score_drop,
-                                    winrate_drop=winrate_drop, variations=num_variations))
+            turns_black.append(Turn(turn_number=i + 1,
+                                    position=position,
+                                    score_drop=score_drop,
+                                    winrate_drop=winrate_drop,
+                                    variations=num_variations))
         else:
-            turns_white.append(Turn(turn_number=i + 1, position=position, score_drop=score_drop,
-                                    winrate_drop=winrate_drop, variations=num_variations))
+            turns_white.append(Turn(turn_number=i + 1,
+                                    position=position,
+                                    score_drop=score_drop,
+                                    winrate_drop=winrate_drop,
+                                    variations=num_variations))
 
     return turns_black, turns_white
 
 
-def get_blunder_and_mistake_thresholds(rank, path):
+def get_blunder_and_mistake_val(rank, path):
     if rank is None:
         return None, None
     try:
@@ -126,17 +133,18 @@ def get_blunder_and_mistake_thresholds(rank, path):
 
 
 def get_blunders_and_mistakes(turns: list, rank, path_to_thresholds):
-    blunder_threshold, mistake_threshold = get_blunder_and_mistake_thresholds(rank, path_to_thresholds)
+    blunder_val, mistake_val = get_blunder_and_mistake_val(rank,
+                                                           path_to_thresholds)
     blunders = list()
     mistakes = list()
 
     for turn in turns:
-        if blunder_threshold is None or turn.score_drop >= blunder_threshold:
+        if blunder_val is None or turn.score_drop >= blunder_val:
             blunders.append(turn)
-        elif turn.score_drop >= mistake_threshold:
+        elif turn.score_drop >= mistake_val:
             mistakes.append(turn)
 
-    if blunder_threshold is None:
+    if blunder_val is None:
         return blunders[:min(5, len(blunders))], list()
 
     return blunders, mistakes
@@ -148,14 +156,18 @@ def get_worst_errors(game: sgf.Sgf_game, path_to_thresholds):
     turns_white.sort()
 
     rank_black, rank_white = get_player_ranks(game)
-    blunders_black, mistakes_black = get_blunders_and_mistakes(turns_black, rank_black, path_to_thresholds)
-    blunders_white, mistakes_white = get_blunders_and_mistakes(turns_white, rank_white, path_to_thresholds)
+    blunders_b, mistakes_b = get_blunders_and_mistakes(turns_black,
+                                                       rank_black,
+                                                       path_to_thresholds)
+    blunders_w, mistakes_w = get_blunders_and_mistakes(turns_white,
+                                                       rank_white,
+                                                       path_to_thresholds)
 
     dict_worst = {
-        "blunders_black": convert_turns_to_list(blunders_black),
-        "mistakes_black": convert_turns_to_list(mistakes_black),
-        "blunders_white": convert_turns_to_list(blunders_white),
-        "mistakes_white": convert_turns_to_list(mistakes_white)
+        "blunders_black": convert_turns_to_list(blunders_b),
+        "mistakes_black": convert_turns_to_list(mistakes_b),
+        "blunders_white": convert_turns_to_list(blunders_w),
+        "mistakes_white": convert_turns_to_list(mistakes_w)
     }
 
     return dict_worst
@@ -175,4 +187,3 @@ def parse_game(path_to_game, path_to_thresholds):
 
 if __name__ == "__main__":
     print(parse_game("tests/test_games/A.sgf", "ranks_table.csv"))
-

@@ -17,14 +17,24 @@ pipeline {
 				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt'
 			}
 		}
-		stage('Tester') {
-			steps {
-				sh '`cat activate_cmd` && cd ./code/get_blunders && PYTHONPATH=. python3 -m pytest --junit-xml report.xml --cov-branch --cov src --cov-report html tests/ && cd ../../..' 
-			}
-			post {
-				always {
-						junit '**/code/get_blunders/report.xml'
+		stage('Testing') {
+			parallel {
+				stage('Linter') {
+					steps {
+						sh '`cat activate_cmd` && python3 -m flake8 src/'
 					}
+				}
+			
+				stage('Tester') {
+					steps {
+						sh '`cat activate_cmd` && cd ./code/get_blunders && PYTHONPATH=. python3 -m pytest --junit-xml report.xml --cov-branch --cov src --cov-report html tests/ && cd ../../..' 
+					}
+					post {
+						always {
+								junit '**/code/get_blunders/report.xml'
+							}
+					}
+				}
 			}
 		}
 
