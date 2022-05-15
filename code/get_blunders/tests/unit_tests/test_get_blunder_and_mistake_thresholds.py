@@ -8,7 +8,7 @@ def test_correct_order():
     mistakes = list()
 
     for rank in range(-14, 10):
-        blunder, mistake = get_blunder_and_mistake_thresholds(rank, path='../ranks_table.csv')
+        blunder, mistake = get_blunder_and_mistake_thresholds(rank, path='ranks_table.csv')
         assert blunder > mistake
 
     for i in range(len(blunders) - 1):
@@ -17,7 +17,7 @@ def test_correct_order():
 
 
 def test_none_rank():
-    assert (None, None) == get_blunder_and_mistake_thresholds(None, "../../ranks_table.csv")
+    assert (None, None) == get_blunder_and_mistake_thresholds(None, "ranks_table.csv")
 
 
 def test_incorrect_path():

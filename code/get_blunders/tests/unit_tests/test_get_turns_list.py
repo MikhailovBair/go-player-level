@@ -18,8 +18,8 @@ def check_game(path):
 
 
 def test_game_with_correct_ending():
-    check_game("test_games/A-analyzed.sgf")
+    check_game("./tests/test_games/A-analyzed.sgf")
 
 
 def test_game_with_incorrect_ending():
-    check_game("test_games/B-analyzed.sgf")
+    check_game("./tests/test_games/B-analyzed.sgf")

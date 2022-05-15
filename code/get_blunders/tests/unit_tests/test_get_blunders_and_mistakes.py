@@ -7,7 +7,7 @@ def test_correct_rank():
     turn3 = Turn(5, (4, 8), -300, 0.7, [[(2, 3), (6, 8)]])
     turns = [turn1, turn2, turn3]
 
-    blunders, mistakes = get_blunders_and_mistakes(turns, 1, "../ranks_table.csv")
+    blunders, mistakes = get_blunders_and_mistakes(turns, 1, "ranks_table.csv")
     assert turn1 in blunders
     assert turn2 in blunders
     assert turn3 not in blunders
@@ -22,7 +22,7 @@ def test_none_rank():
     turn6 = Turn(11, (4, 6), 0.7, 0.7, [[(1, 3), (5, 8)]])
     turns = [turn1, turn2, turn3, turn4, turn5, turn6]
 
-    blunders, mistakes = get_blunders_and_mistakes(turns, None, "../ranks_table.csv")
+    blunders, mistakes = get_blunders_and_mistakes(turns, None, "ranks_table.csv")
     assert 5 == len(blunders)
     assert 0 == len(mistakes)
 
