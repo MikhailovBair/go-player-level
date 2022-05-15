@@ -52,7 +52,7 @@ def get_numerical_variations(variations):
             except ValueError:
                 pass
         num_variations.append(num_variation)
-        return num_variations
+    return num_variations
 
 
 def get_index_dan(rank):
