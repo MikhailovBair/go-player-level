@@ -14,7 +14,7 @@ pipeline {
 		}
 		stage('Install Requirements') {
 			steps {
-				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && apt install -y nodejs && apt install -y npm && npm install -g analyze-sgf && apt install -y libzip-dev && apt-get install -y lsb-core'
+				sh '`cat activate_cmd` && python3 -m pip install -r code/get_blunders/requirements.txt'
 			}
 		}
 		stage('Tester') {
