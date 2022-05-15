@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 	stages {
+		stage('Checkout needed branch') {
+			steps {
+				sh 'git checkout GOPL-119'
+			}
+		}
 		stage('Install virtualenv') {
 			options {
 				timeout(time: 1, unit: 'HOURS')
